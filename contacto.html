@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- METADATOS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- STYLES -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/contacto.css">
+    <!-- FUENTES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js" defer></script>
+    <script src="./js/particles.js" defer></script>
+    <!-- GENERAL -->
+    <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
+    <title>Contacto | RG Gesti&oacute;n de Marcas</title>
+</head>
+<body>
+    <!-- PARTICLES -->
+    <div id="particles-js"></div>
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <nav class="nav">
+        <div class="containerLogo">
+            <a href="./index.html">
+                <img class="nav_logo" src="./img/logoRG.png" alt="Logo RG Agencia de Marketing">
+            </a>
+        </div>
+        <button class="nav_buttonMenu" id="menuBtn">
+            <svg class="nav_buttonMenuSVG"
+                width="40"
+                height="40"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke-width="2">
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+        <div class="circular_reveal_menu" id="menuOverlay">
+            <ul class="menu_items">
+                <li><a href="./index.html">Inicio</a></li>
+                <li><a href="./nosotros.html">Sobre Nosotros</a></li>
+                <li><a href="./simulador-servicios.html">Simulador IA</a></li>
+                <li><a href="./contacto.html">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- MAIN -->
+    <main class="main">
+        <!-- BOTÓN VOLVER -->
+        <div class="back-btn-container">
+            <button onclick="window.location.href='./index.html'" class="btn-back"><i class="fas fa-arrow-left"></i> Volver</button>
+        </div>
+
+        <!-- HEADER -->
+        <section class="contacto-header">
+            <h1>Hablemos de tu <span class="highlight">Marca</span></h1>
+            <p>Cuéntanos sobre tu proyecto y te responderemos a la brevedad.</p>
+        </section>
+
+        <!-- FORMULARIO + INFO -->
+        <section class="contacto-form-section">
+
+            <!-- FORMULARIO -->
+            <form class="contacto-form" id="contactForm" novalidate>
+                <div class="form-group">
+                    <label for="nombre">Nombre *</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo electrónico *</label>
+                    <input type="email" id="email" name="email" placeholder="tu@correo.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono" placeholder="+52 222 000 0000">
+                </div>
+                <div class="form-group">
+                    <label for="servicio">Servicio de interés</label>
+                    <select id="servicio" name="servicio">
+                        <option value="">Selecciona una opción</option>
+                        <option value="investigacion">Investigación de Mercados</option>
+                        <option value="naiming">Naming, Diseño y Producción</option>
+                        <option value="web">Diseño Web</option>
+                        <option value="redes">Gestión de Redes Sociales</option>
+                        <option value="cursos">Cursos y Capacitación</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="mensaje">Mensaje *</label>
+                    <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos sobre tu proyecto o consulta..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-enfasis btn-submit" id="submitBtn">Enviar mensaje</button>
+
+                <div class="form-notification" id="formNotification" role="alert"></div>
+            </form>
+
+            <!-- INFO DE CONTACTO -->
+            <aside class="contacto-info">
+                <div class="info-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Correo electrónico</h3>
+                    <p>contacto@rg-gestiondemarcas.com</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Teléfono</h3>
+                    <p>+52 222 446 7947</p>
+                </div>
+                <!-- <div class="info-card">
+                    <i class="fas fa-share-alt"></i>
+                    <h3>Redes sociales</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/RG.GestiondeMarcas" class="social-link-row" target="_blank" rel="noopener">
+                            <span class="social-link-row__icon"><i class="fab fa-facebook-f"></i></span>
+                            <span class="social-link-row__handle">RG.GestiondeMarcas</span>
+                            <i class="fas fa-chevron-right social-link-row__arrow"></i>
+                        </a>
+                        <a href="https://www.instagram.com/rg_gestionmarcas" class="social-link-row" target="_blank" rel="noopener">
+                            <span class="social-link-row__icon"><i class="fab fa-instagram"></i></span>
+                            <span class="social-link-row__handle">@rg_gestionmarcas</span>
+                            <i class="fas fa-chevron-right social-link-row__arrow"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@rg_gestiondemarcas" class="social-link-row" target="_blank" rel="noopener">
+                            <span class="social-link-row__icon"><i class="fab fa-tiktok"></i></span>
+                            <span class="social-link-row__handle">@rg_gestiondemarcas</span>
+                            <i class="fas fa-chevron-right social-link-row__arrow"></i>
+                        </a>
+                    </div>
+                </div> -->
+            </aside>
+
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-col footer-brand">
+                <img src="./img/logoRG.png" alt="Logo RG" class="footer-brand-logo">
+                <p>Somos una agencia especializada en gestión de marcas. Transformamos negocios a través de estrategias de marketing integrales, diseño y comunicación efectiva.</p>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/RG.GestiondeMarcas" aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/rg_gestionmarcas" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@rg_gestiondemarcas" aria-label="TikTok" target="_blank"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Navegación</h3>
+                <ul>
+                    <li><a href="./index.html">Inicio</a></li>
+                    <li><a href="./nosotros.html">Sobre Nosotros</a></li>
+                    <li><a href="./simulador-servicios.html">Simulador IA</a></li>
+                    <li><a href="./contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Servicios</h3>
+                <ul>
+                    <li><a href="./contacto.html">Investigación de Mercados</a></li>
+                    <li><a href="./contacto.html">Naming, Diseño y Producción</a></li>
+                    <li><a href="./contacto.html">Diseño Web</a></li>
+                    <li><a href="./contacto.html">Gestión de Redes Sociales</a></li>
+                    <li><a href="./contacto.html">Cursos y Capacitación</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contacto</h3>
+                <div class="footer-contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>contacto@rg-gestiondemarcas.com</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>ventas@rg-gestiondemarcas.com</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+52 222 446 7947</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 RG Gestión de Marcas. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Script del menú -->
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        menuBtn.addEventListener('click', () => {
+            menuOverlay.classList.toggle('active');
+            menuBtn.classList.toggle('is-active');
+        });
+    </script>
+
+    <!-- Script del formulario -->
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const btn = document.getElementById('submitBtn');
+            const notification = document.getElementById('formNotification');
+            const originalText = btn.textContent;
+
+            btn.disabled = true;
+            btn.textContent = 'Enviando...';
+            notification.className = 'form-notification';
+            notification.textContent = '';
+
+            const payload = {
+                nombre: document.getElementById('nombre').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                telefono: document.getElementById('telefono').value.trim(),
+                servicio: document.getElementById('servicio').value,
+                mensaje: document.getElementById('mensaje').value.trim(),
+            };
+
+            try {
+                const res = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload),
+                });
+                const data = await res.json();
+
+                if (res.ok) {
+                    notification.className = 'form-notification success visible';
+                    notification.textContent = '¡Mensaje enviado! Te responderemos pronto.';
+                    e.target.reset();
+                } else {
+                    notification.className = 'form-notification error visible';
+                    notification.textContent = data.error || 'Hubo un error al enviar tu mensaje. Intenta de nuevo.';
+                }
+            } catch {
+                notification.className = 'form-notification error visible';
+                notification.textContent = 'Hubo un error al enviar tu mensaje. Intenta de nuevo.';
+            } finally {
+                btn.disabled = false;
+                btn.textContent = originalText;
+            }
+        });
+    </script>
+
+    <!-- FLOATING SOCIAL ICONS -->
+    <div class="floating-social" id="floatingSocial">
+        <a href="https://www.facebook.com/RG.GestiondeMarcas" aria-label="Facebook" class="floating-social__link" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/rg_gestionmarcas" aria-label="Instagram" class="floating-social__link" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@rg_gestiondemarcas" aria-label="TikTok" class="floating-social__link" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <button class="floating-social__toggle" aria-label="Ver redes sociales">
+            <i class="fas fa-share-alt floating-social__icon-open"></i>
+            <i class="fas fa-times floating-social__icon-close"></i>
+        </button>
+    </div>
+    <script>
+        (function () {
+            var social = document.getElementById('floatingSocial');
+            social.querySelector('.floating-social__toggle').addEventListener('click', function () {
+                social.classList.toggle('is-open');
+            });
+        })();
+    </script>
+
+</body>
+</html>

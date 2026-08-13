@@ -1,0 +1,367 @@
+/* CONTACTO PAGE */
+
+.contacto-header {
+    text-align: center;
+    padding: 2rem 5% 3rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.contacto-header h1 {
+    font-family: var(--fontTitle);
+    font-size: 2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+}
+
+.contacto-header p {
+    color: var(--textGray);
+    font-size: 1.1rem;
+}
+
+/* SECCIÓN FORMULARIO + INFO */
+.contacto-form-section {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 5% 5rem;
+    align-items: start;
+}
+
+/* FORMULARIO */
+.contacto-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--textGray);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    background-color: var(--colorCard);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 1rem;
+    color: var(--textWhite);
+    font-family: var(--fontParagraph);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    outline: none;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--colorEnfasis);
+    box-shadow: 0 0 0 3px rgba(246, 207, 61, 0.15);
+}
+
+.form-group select {
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23b3b3b3' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+}
+
+.form-group select option {
+    background-color: var(--colorCard);
+    color: var(--textWhite);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.btn-enfasis {
+    background-color: #f5b731;
+    color: #1a1a1a;
+    border: none;
+    border-radius: 50px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-enfasis:hover {
+    background-color: #e0a820;
+    transform: translateY(-2px);
+}
+
+.btn-submit {
+    align-self: flex-start;
+    font-size: 1rem;
+    padding: 14px 40px;
+}
+
+/* INFO DE CONTACTO */
+.contacto-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.info-card {
+    background-color: var(--colorCard);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.info-card:hover {
+    border-color: var(--colorEnfasis);
+    transform: translateY(-3px);
+}
+
+.info-card i {
+    font-size: 1.5rem;
+    color: var(--colorEnfasis);
+    margin-bottom: 0.75rem;
+    display: block;
+}
+
+.info-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    color: var(--textWhite);
+}
+
+.info-card p {
+    font-size: 0.95rem;
+    color: var(--textGray);
+    margin-bottom: 0;
+    line-height: 1.4;
+}
+
+/* SOCIAL LINKS DENTRO DE INFO-CARD */
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+}
+
+.social-link-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.55rem 0.75rem;
+    border-radius: 8px;
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.social-link-row:hover {
+    background-color: rgba(246, 207, 61, 0.08);
+    border-color: rgba(246, 207, 61, 0.3);
+    transform: translateX(4px);
+}
+
+.social-link-row__icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    color: var(--colorEnfasis);
+    flex-shrink: 0;
+}
+
+.social-link-row__handle {
+    font-size: 0.88rem;
+    color: var(--textGray);
+    flex: 1;
+    transition: color 0.25s ease;
+}
+
+.social-link-row:hover .social-link-row__handle {
+    color: var(--textWhite);
+}
+
+.social-link-row__arrow {
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.2);
+    transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.social-link-row:hover .social-link-row__arrow {
+    color: var(--colorEnfasis);
+    transform: translateX(3px);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .contacto-header h1 {
+        font-size: 2.2rem;
+    }
+
+    .contacto-form-section {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .contacto-info {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    .btn-submit {
+        align-self: stretch;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .contacto-info {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== FLOATING SOCIAL ICONS ===== */
+.floating-social {
+    position: fixed;
+    bottom: 28px;
+    right: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    z-index: 9999;
+}
+
+.floating-social__link {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, opacity 0.22s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.floating-social__link:hover {
+    background-color: var(--colorEnfasis);
+    border-color: var(--colorEnfasis);
+    color: var(--colorbackground);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(246, 207, 61, 0.3);
+}
+
+.floating-social__toggle {
+    display: none;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background-color: var(--colorEnfasis);
+    border: none;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    color: var(--colorbackground);
+    font-size: 1.1rem;
+    box-shadow: 0 4px 14px rgba(246, 207, 61, 0.45);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex-shrink: 0;
+}
+
+.floating-social__toggle:hover {
+    transform: scale(1.08);
+}
+
+.floating-social__icon-close { display: none; }
+
+.floating-social.is-open .floating-social__icon-open { display: none; }
+.floating-social.is-open .floating-social__icon-close { display: block; }
+
+/* ===== FORM FEEDBACK ===== */
+.form-notification {
+    display: none;
+    margin-top: 1rem;
+    padding: 14px 20px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.form-notification.visible {
+    display: block;
+}
+
+.form-notification.success {
+    background-color: rgba(34, 197, 94, 0.12);
+    border: 1px solid rgba(34, 197, 94, 0.35);
+    color: #4ade80;
+}
+
+.form-notification.error {
+    background-color: rgba(239, 68, 68, 0.12);
+    border: 1px solid rgba(239, 68, 68, 0.35);
+    color: #f87171;
+}
+
+.btn-submit:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+    .floating-social__toggle {
+        display: flex;
+    }
+
+    .floating-social__link {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .floating-social.is-open .floating-social__link {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .floating-social.is-open .floating-social__link:nth-child(4) { transition-delay: 0s; }
+    .floating-social.is-open .floating-social__link:nth-child(3) { transition-delay: 0.07s; }
+    .floating-social.is-open .floating-social__link:nth-child(2) { transition-delay: 0.14s; }
+    .floating-social.is-open .floating-social__link:nth-child(1) { transition-delay: 0.21s; }
+}

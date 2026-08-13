@@ -1,0 +1,17 @@
+{
+  "name": "rg-gestiondemarketing-site",
+  "version": "1.0.0",
+  "description": "Desarrollo de un site para la empresa RG Agencia de Marketing Digital",
+  "keywords": [
+    "HTML",
+    "CSS",
+    "JavaScript"
+  ],
+  "license": "ISC",
+  "author": "Axel Meyrek",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

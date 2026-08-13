@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- METADATOS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Primary Meta Tags -->
+    <title>RG - GESTION DE MARCAS</title>
+    <meta name="title" content="RG - GESTION DE MARCAS" />
+    <meta name="description"
+        content="Somos una agencia especializada en gestión de marcas. Transformamos negocios a través de estrategias de marketing integrales, diseño y comunicación efectiva." />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://metatags.io/" />
+    <meta property="og:title" content="RG - GESTION DE MARCAS" />
+    <meta property="og:description"
+        content="Somos una agencia especializada en gestión de marcas. Transformamos negocios a través de estrategias de marketing integrales, diseño y comunicación efectiva." />
+    <meta property="og:image" content="./img/cover.webp" />
+
+    <!-- X (Twitter) -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://metatags.io/" />
+    <meta property="twitter:title" content="RG - GESTION DE MARCAS" />
+    <meta property="twitter:description"
+        content="Somos una agencia especializada en gestión de marcas. Transformamos negocios a través de estrategias de marketing integrales, diseño y comunicación efectiva." />
+    <meta property="twitter:image" content="./img/cover.webp" />
+
+    <!-- Meta Tags Generated with https://metatags.io -->
+    <!-- STYLES -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <!-- FUENTES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./css/nosotros.css">
+    <!-- LITE-YOUTUBE -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.3/src/lite-yt-embed.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/lite-youtube-embed@0.3.3/src/lite-yt-embed.min.js" defer></script>
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js" defer></script>
+    <script src="./js/particles.js" defer></script>
+    <script src="./js/index.js" defer></script>
+    <!-- GENERAL -->
+    <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
+    <title>RG Agencia de Marketing</title>
+</head>
+<body>
+    <!-- PARTICLES -->
+    <div id="particles-js"></div>
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <nav class="nav">
+        <div class="containerLogo">
+            <a href="./index.html">
+                <img class="nav_logo" class="containerLogo_img" src="./img/logoRG.png" alt="Logo RG Agencia de Marketing">
+            </a>
+        </div>
+        <button class="nav_buttonMenu" id="menuBtn">
+            <svg class="nav_buttonMenuSVG" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+
+        </button>
+        <div class="circular_reveal_menu" id="menuOverlay">
+            <ul class="menu_items">
+                <li><a href="./index.html">Inicio</a></li>
+                <li><a href="./nosotros.html">Sobre Nosotros</a></li>
+                <li><a href="./simulador-servicios.html">Simulador IA</a></li>
+                <li><a href="./contacto.html">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- MAIN -->
+    <main class="main" id="home-screen">
+        <!-- HERO -->
+        <section class="hero">
+            <svg id="main-svg" class="hero_logoSVG" viewBox="0 0 1500 1500" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path class="hero_logoPath"
+                    d="M3 153.054V33.0544H435C808.5 65.5544 990 447.554 702.5 751.554C592.5 847.054 602.5 1044.05 737 1126.55L902 1452.05C643 1470.55 360 1212.55 360 947.554L364.5 648.054C644.5 621.054 603 288.054 388.5 280.554H135C9.5 269.054 3 153.054 3 153.054Z" />
+                <path class="hero_logoPath"
+                    d="M1385 290.053C1242 23.5537 926.5 -55.9456 691 45.5533C825 132.054 868 222.554 893 294.554C983 288.054 1068.5 340.054 1113 414.054L1385 290.053Z" />
+                <path class="hero_logoPath"
+                    d="M1082.75 892.054H1142.5C1158.5 1088.55 983.5 1198.55 824.5 1147.05C874.748 1238.25 898.817 1284.53 965 1394.55C1055.23 1544.55 1432 1260.05 1442 965.554L1443 658.054H1103C1087.24 706.639 1073.64 732.481 1042.5 776.554C1001 823.054 1029 885.054 1082.75 892.054Z" />
+
+                <g id="spheres-container">
+                    <!-- 1. Investigación de mercados — top, touching path 1 horizontal line -->
+                    <g class="sphere-group" onclick="handleClick('Investigación de mercados')">
+                        <rect x="740" y="32" width="350" height="48" rx="24" class="label-bg" />
+                        <circle cx="690" cy="45" r="14" class="interactive-sphere" />
+                        <text x="750" y="65" class="sphere-label">Investigación de mercados</text>
+                    </g>
+
+                    <!-- 2. Naming, diseño y producción — right-upper, touching path 2 -->
+                    <g class="sphere-group" onclick="handleClick('Naming, diseño y producción')">
+                        <rect x="915" y="230" width="390" height="48" rx="24" class="label-bg" />
+                        <circle cx="895" cy="295" r="14" class="interactive-sphere" />
+                        <text x="930" y="260" class="sphere-label">Naming, diseño y producción</text>
+                    </g>
+
+                    <!-- 3. Diseño Web — right-middle, touching path 3 right edge -->
+                    <g class="sphere-group" onclick="handleClick('Diseño Web')">
+                        <rect x="1130" y="688" width="175" height="48" rx="24" class="label-bg right-aligned" />
+                        <circle cx="1100" cy="658" r="14" class="interactive-sphere" />
+                        <text x="1293" y="720" class="sphere-label" text-anchor="end">Diseño Web</text>
+                    </g>
+
+                    <!-- 4. Gestión de redes sociales — left-middle, touching path 1 curve -->
+                    <g class="sphere-group" onclick="handleClick('Gestión de redes sociales')">
+                        <rect x="375" y="655" width="345" height="48" rx="24" class="label-bg" />
+                        <circle cx="360" cy="650" r="14" class="interactive-sphere" />
+                        <text x="395" y="690" class="sphere-label">Gestión de redes sociales</text>
+                    </g>
+
+                    <!-- 5. Cursos y capacitación — bottom, touching path 3 lower area -->
+                    <g class="sphere-group" onclick="handleClick('Cursos y capacitación')">
+                        <rect x="1080" y="1100" width="300" height="48" rx="24" class="label-bg" />
+                        <circle cx="1060" cy="1100" r="14" class="interactive-sphere" />
+                        <text x="1095" y="1132" class="sphere-label">Cursos y capacitación</text>
+                    </g>
+
+                    <!-- 6. Simulador IA — bottom-left, link to simulador-servicios.html -->
+                    <a href="./simulador-servicios.html">
+                        <g class="sphere-group">
+                            <rect x="280" y="90" width="320" height="48" rx="24" class="label-bg" />
+                            <circle cx="320" cy="35" r="14" class="interactive-sphere" />
+                            <text x="300" y="120" class="sphere-label">Simulador de servicios</text>
+                        </g>
+                    </a>
+                </g>
+            </svg>
+        </section>
+
+        <!-- === DESCANSO VISUAL 1 === -->
+        <section class="quote-break reveal">
+            <h2 class="slogan">"Estrategias que inspiran"</h2>
+            <span>RG GESTIÓN DE MARCAS</span>
+        </section>
+
+
+        <section class="servicios-home">
+
+            <div class="servicios-home-grid">
+                <!-- Investigación de Mercados -->
+                <div class="servicio-home-card">
+                    <i class="fas fa-chart-bar"></i>
+                    <h3>Investigaci&oacute;n de Mercados</h3>
+                    <p>Conoce a tus clientes y competencia para conectar con tus consumidores mediante estrategias
+                        precisas y eficientes.</p>
+                    <button class="btn-servicio-mas" onclick="handleClick('Investigación de mercados')">Ver m&aacute;s
+                        <i class="fas fa-arrow-right"></i></button>
+                </div>
+
+                <!-- Naming, Diseño y Producción -->
+                <div class="servicio-home-card">
+                    <i class="fas fa-pen-nib"></i>
+                    <h3>Naming, Dise&ntilde;o y Producci&oacute;n</h3>
+                    <p>Creamos la imagen corporativa, identidad visual y campa&ntilde;as de promoci&oacute;n para
+                        posicionar tu marca.</p>
+                    <button class="btn-servicio-mas" onclick="handleClick('Naming, diseño y producción')">Ver m&aacute;s
+                        <i class="fas fa-arrow-right"></i></button>
+                </div>
+
+                <!-- Diseño Web -->
+                <div class="servicio-home-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Dise&ntilde;o Web</h3>
+                    <p>Creamos tu p&aacute;gina web para dar visibilidad global 24/7 a tu marca y funcionar como
+                        escaparate digital.</p>
+                    <button class="btn-servicio-mas" onclick="handleClick('Diseño Web')">Ver m&aacute;s <i
+                            class="fas fa-arrow-right"></i></button>
+                </div>
+
+                <!-- Gestión de Redes Sociales -->
+                <div class="servicio-home-card">
+                    <i class="fas fa-share-alt"></i>
+                    <h3>Gesti&oacute;n de Redes Sociales</h3>
+                    <p>Plan personalizado para aumentar la visibilidad de tu negocio y construir una reputaci&oacute;n
+                        s&oacute;lida en redes.</p>
+                    <button class="btn-servicio-mas" onclick="handleClick('Gestión de redes sociales')">Ver m&aacute;s
+                        <i class="fas fa-arrow-right"></i></button>
+                </div>
+
+                <!-- Cursos y Capacitación -->
+                <div class="servicio-home-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Cursos y Capacitaci&oacute;n</h3>
+                    <p>Cursos y capacitaciones para el personal de tu empresa, aumentando productividad e
+                        innovaci&oacute;n.</p>
+                    <button class="btn-servicio-mas" onclick="handleClick('Cursos y capacitación')">Ver m&aacute;s <i
+                            class="fas fa-arrow-right"></i></button>
+                </div>
+
+                <!-- Cursos y Capacitación -->
+                <div class="servicio-home-card">
+                    <i class="fas fa-robot"></i>
+                    <h3>Simulador de Servicios</h3>
+                    <p>Simulador de servicios IA para identificar qué servicios de marketing necesitas.</p>
+                    <a href="./simulador-servicios.html" class="btn-servicio-mas">Probar Simulador <i
+                            class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- === DESCANSO VISUAL 1 === -->
+        <section class="quote-break reveal">
+            <h2>"RG es una de las empresas de marketing que mejor nos trabajan, han realizado para nosotros diversos
+                proyectos, entre los que destacan estudios de mercado. ¡Los recomendamos ampliamente!"</h2>
+            <img class="quoteBreak_logo" src="./img/logosClientes/Upaep.webp" alt="">
+        </section>
+
+
+        <!-- SECCIÓN POR QUÉ ES IMPORTANTE -->
+        <section class="nosotros-importancia">
+            <h2>&iquest;Por qu&eacute; es importante la <span class="highlight">Gesti&oacute;n de tu Marca</span>?</h2>
+
+            <div class="importancia-grid">
+                <!-- Incrementa el valor -->
+                <div class="importancia-item">
+                    <div class="importancia-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Incrementa el valor</h3>
+                    <p>Eleva la percepci&oacute;n de una marca con sus productos o servicios.</p>
+                </div>
+
+                <!-- Genera lealtad -->
+                <div class="importancia-item">
+                    <div class="importancia-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Genera lealtad</h3>
+                    <p>Crea una base de clientes fieles y embajadores de la marca.</p>
+                </div>
+
+                <!-- Aumenta el reconocimiento -->
+                <div class="importancia-item">
+                    <div class="importancia-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Aumenta el reconocimiento</h3>
+                    <p>Genera que la empresa sea m&aacute;s f&aacute;cil de reconocer y recordar.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- === DESCANSO VISUAL 2 === -->
+        <section class="quote-break reveal">
+            <h2>"En RG encontramos la asesoría y diseño que nuestra empresa necesitaba, nos renovaron nuestra imagen y
+                papelería; su equipo nos estudió a detalle dejando excelentes resultados."</h2>
+            <img class="quoteBreak_logo" src="./img/logosClientes/SalgadoProducciones.webp"
+                alt="Logo Salgado Producciones">
+        </section>
+
+        <!-- === NUESTROS CLIENTES === -->
+        <section class="main-clientes reveal">
+            <div class="main-clientes__header">
+                <span class="main-clientes__eyebrow">Confían en nosotros</span>
+                <h2 class="main-clientes__title">Nuestros Clientes</h2>
+                <div class="main-clientes__divider"></div>
+            </div>
+            <div class="brand-carousel">
+                <div class="brand-track">
+                    <div class="brand-item"><img src="./img/logosClientes/logoCliente1.webp" alt="Cliente"></div>
+                    <div class="brand-item"><img src="./img/logosClientes/logoCliente2.webp" alt="Cliente"></div>
+                    <div class="brand-item"><img src="./img/logosClientes/logoCliente3.webp" alt="Cliente"></div>
+                    <div class="brand-item"><img src="./img/logosClientes/logoCliente4.webp" alt="Cliente"></div>
+                    <div class="brand-item"><img src="./img/logosClientes/logoCliente5.webp" alt="Cliente"></div>
+                    <div class="brand-item"><img src="./img/logosClientes/logoCliente6.webp" alt="Cliente"></div>
+                    <div class="brand-item"><img src="./img/logosClientes/logoCliente7.webp" alt="Cliente"></div>
+                    <div class="brand-item"><img src="./img/logosClientes/logoCliente8.webp" alt="Cliente"></div>
+                    <div class="brand-item"><img src="./img/logosClientes/logoCliente9.webp" alt="Cliente"></div>
+                    <div class="brand-item"><img src="./img/logosClientes/SalgadoProducciones.webp"
+                            alt="Salgado Producciones"></div>
+                    <div class="brand-item"><img src="./img/logosClientes/Upaep.webp" alt="Upaep"></div>
+                    <!-- Duplicados para scroll infinito -->
+                    <div class="brand-item"><img src="./img/logosClientes/logoCliente1.webp" alt="Cliente"></div>
+                    <div class="brand-item"><img src="./img/logosClientes/logoCliente2.webp" alt="Cliente"></div>
+                    <div class="brand-item"><img src="./img/logosClientes/logoCliente3.webp" alt="Cliente"></div>
+                    <div class="brand-item"><img src="./img/logosClientes/logoCliente4.webp" alt="Cliente"></div>
+                    <div class="brand-item"><img src="./img/logosClientes/logoCliente5.webp" alt="Cliente"></div>
+                    <div class="brand-item"><img src="./img/logosClientes/logoCliente6.webp" alt="Cliente"></div>
+                    <div class="brand-item"><img src="./img/logosClientes/logoCliente7.webp" alt="Cliente"></div>
+                    <div class="brand-item"><img src="./img/logosClientes/logoCliente8.webp" alt="Cliente"></div>
+                    <div class="brand-item"><img src="./img/logosClientes/logoCliente9.webp" alt="Cliente"></div>
+                    <div class="brand-item"><img src="./img/logosClientes/SalgadoProducciones.webp"
+                            alt="Salgado Producciones"></div>
+                    <div class="brand-item"><img src="./img/logosClientes/Upaep.webp" alt="Upaep"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- === DESCANSO VISUAL 3 === -->
+        <section class="quote-break reveal">
+            <h2>"La decisión de confiar en RG para acompañar la gestión de nuestra marca ha sido muy acertada, pues su
+                trabajo ha dado forma y presencia a nuestro proyecto en el ámbito digital; hoy contamos con un logotipo,
+                página web y campaña en redes que reflejan con claridad nuestra identidad humanista."</h2>
+            <img class="quoteBreak_logo" src="./img/logosClientes/logoCliente6.webp" alt="Logo Salgado Producciones">
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-col footer-brand">
+                <img src="./img/logoRG.png" alt="Logo RG" class="footer-brand-logo">
+                <p>Somos una agencia especializada en gestión de marcas. Transformamos negocios a través de estrategias
+                    de marketing integrales, diseño y comunicación efectiva.</p>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/RG.GestiondeMarcas" aria-label="Facebook" target="_blank"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/rg_gestionmarcas" aria-label="Instagram" target="_blank"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@rg_gestiondemarcas" aria-label="TikTok" target="_blank"><i
+                            class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Navegación</h3>
+                <ul>
+                    <li><a href="./index.html">Inicio</a></li>
+                    <li><a href="./nosotros.html">Sobre Nosotros</a></li>
+                    <li><a href="./simulador-servicios.html">Simulador IA</a></li>
+                    <li><a href="./contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Servicios</h3>
+                <ul>
+                    <li><a href="./contacto.html">Investigación de Mercados</a></li>
+                    <li><a href="./contacto.html">Naming, Diseño y Producción</a></li>
+                    <li><a href="./contacto.html">Diseño Web</a></li>
+                    <li><a href="./contacto.html">Gestión de Redes Sociales</a></li>
+                    <li><a href="./contacto.html">Cursos y Capacitación</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contacto</h3>
+                <div class="footer-contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>contacto@rg-gestiondemarcas.com</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>ventas@rg-gestiondemarcas.com</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+52 222 446 7947</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 RG Gestión de Marcas. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- SECCIÓN: INVESTIGACIÓN DE MERCADOS -->
+    <div id="sec-investigacion" class="screen">
+        <section class="service-section-A">
+            <div class="back-btn-container">
+                <button onclick="goBack()" class="btn-back"><i class="fas fa-arrow-left"></i> Volver</button>
+            </div>
+
+            <!-- Intro -->
+            <div class="inv-hero">
+                <h2 class="service-title">Investigación de <span>Mercados</span></h2>
+                <p class="inv-hero__desc">
+                    Un estudio de mercado ayudará a tu marca a conocer a sus clientes o a su competencia y saber qué
+                    necesita para lograr conectar con sus consumidores y ofertar sus productos o servicios con
+                    estrategias precisas y eficientes.
+                </p>
+            </div>
+
+            <!-- Estudio Cualitativo -->
+            <div class="inv-block">
+                <div class="inv-block__info">
+                    <h3 class="service-subtitle">Estudio Cualitativo</h3>
+                    <p class="service-description">
+                        Un estudio de mercado cualitativo te ayudará a conocer percepciones, gustos y preferencias de
+                        tus clientes acerca de tu marca, tus productos o servicios.
+                    </p>
+                    <p class="inv-block__instruments-label">Se realiza mediante diferentes instrumentos presenciales o
+                        en línea:</p>
+                    <ul class="inv-instruments">
+                        <li><i class="fas fa-users"></i> Focus Group</li>
+                        <li><i class="fas fa-comments"></i> Entrevistas de Profundidad</li>
+                    </ul>
+                </div>
+                <div class="inv-block__media">
+                    <!-- Reemplaza VIDEO_ID con el ID real del video de YouTube -->
+                    <lite-youtube videoid="F8Ka9dWAFD4"
+                        playlabel="Estudio Cualitativo - RG Gestión de Marcas"></lite-youtube>
+                </div>
+            </div>
+
+            <!-- Estudio Benchmarking -->
+            <div class="inv-block inv-block--reverse">
+                <div class="inv-block__info">
+                    <h3 class="service-subtitle">Estudio Benchmarking</h3>
+                    <p class="service-description">
+                        Un estudio de mercado benchmarking, te ayudará para analizar y observar a tus competidores y con
+                        base en la información recabada poder tomar decisiones estratégicas para el posicionamiento, y
+                        reconocimiento de tu marca.
+                    </p>
+                </div>
+                <div class="inv-block__media inv-block__media--horizontal">
+                    <img src="./img/InvestigacionDeMercados/investigacionDeMercados1.webp" alt="Estudio Benchmarking">
+                </div>
+            </div>
+
+            <!-- Estudio Cuantitativo -->
+            <div class="inv-block">
+                <div class="inv-block__info">
+                    <h3 class="service-subtitle">Estudio Cuantitativo</h3>
+                    <p class="service-description">
+                        Un estudio de mercado cuantitativo te permitirá obtener datos numéricos y estadísticos para
+                        medir, describir y predecir comportamientos del mercado, tendencias y efectividad de estrategias
+                        para facilitar la toma de decisiones de tu empresa.
+                    </p>
+                </div>
+                <div class="inv-block__media inv-block__media--square">
+                    <img src="./img/InvestigacionDeMercados/investigacionDeMercados2.webp" alt="Estudio Cuantitativo">
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="inv-cta">
+                <a href="./contacto.html" class="cta-button">CONTACTAR AHORA</a>
+            </div>
+
+            <!-- === NUESTROS CLIENTES === -->
+            <section class="main-clientes reveal">
+                <div class="main-clientes__header">
+                    <span class="main-clientes__eyebrow">Confían en nosotros</span>
+                    <h2 class="main-clientes__title">Nuestros Clientes</h2>
+                    <div class="main-clientes__divider"></div>
+                </div>
+                <div class="brand-carousel">
+                    <div class="brand-track">
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente1.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente2.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente3.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente4.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente5.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente6.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente7.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente8.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente9.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/SalgadoProducciones.webp"
+                                alt="Salgado Producciones"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/Upaep.webp" alt="Upaep"></div>
+                        <!-- Duplicados para scroll infinito -->
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente1.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente2.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente3.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente4.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente5.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente6.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente7.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente8.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente9.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/SalgadoProducciones.webp"
+                                alt="Salgado Producciones"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/Upaep.webp" alt="Upaep"></div>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </div>
+
+    <!-- SECCIÓN: NAMING, DISEÑO Y PRODUCCIÓN -->
+    <div id="sec-branding" class="screen">
+        <section class="service-section-A">
+            <div class="back-btn-container"><button onclick="goBack()" class="btn-back"><i
+                        class="fas fa-arrow-left"></i> Volver</button></div>
+
+            <!-- Hero -->
+            <div class="ndp-hero">
+                <h2 class="service-title">Naming, Diseño y <span>Producción</span></h2>
+                <p class="ndp-hero__desc">
+                    <strong>Naming:</strong> Te ayudamos, mediante la investigación de mercados, a determinar el nombre
+                    más adecuado para que tu empresa logre conectar con el mercado. <strong>Diseño:</strong> Creamos la
+                    imagen corporativa, identidad visual y campañas de promoción para tu marca.
+                    <strong>Producción:</strong> Generamos instrumentos audiovisuales para posicionar tu marca.
+                </p>
+            </div>
+
+
+            <!-- Logos que hemos diseñado -->
+            <div class="ndp-section ndp-logos-section">
+                <h3 class="ndp-section__title">Logos que hemos <span>diseñado</span></h3>
+                <p class="ndp-logos-section__desc">Cada logo es el resultado de un proceso creativo profundo: investigación, concepto y diseño al servicio de tu marca.</p>
+                <button class="ndp-logos-toggle" id="ndpLogosToggle">
+                    <i class="fas fa-eye"></i>
+                    <span>Ver todos los logos</span>
+                </button>
+                <div class="ndp-logos-grid" id="ndpLogosGrid">
+                    <div class="ndp-logo-card">
+                        <div class="ndp-logo-card__inner">
+                            <div class="ndp-logo-card__front">
+                                <div class="ndp-logo-card__deco"></div>
+                                <span class="ndp-logo-card__name">BeerPong</span>
+                                <div class="ndp-logo-card__deco"></div>
+                                <span class="ndp-logo-card__hint"><i class="fas fa-hand-pointer"></i> Descubrir logo</span>
+                            </div>
+                            <div class="ndp-logo-card__back">
+                                <img src="./img/logosClientes/logoBeerPong.webp" alt="BeerPong">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ndp-logo-card">
+                        <div class="ndp-logo-card__inner">
+                            <div class="ndp-logo-card__front">
+                                <div class="ndp-logo-card__deco"></div>
+                                <span class="ndp-logo-card__name">Mandaditos</span>
+                                <div class="ndp-logo-card__deco"></div>
+                                <span class="ndp-logo-card__hint"><i class="fas fa-hand-pointer"></i> Descubrir logo</span>
+                            </div>
+                            <div class="ndp-logo-card__back">
+                                <img src="./img/logosClientes/logoMandaditos.webp" alt="Mandaditos">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ndp-logo-card">
+                        <div class="ndp-logo-card__inner">
+                            <div class="ndp-logo-card__front">
+                                <div class="ndp-logo-card__deco"></div>
+                                <span class="ndp-logo-card__name">Odontie</span>
+                                <div class="ndp-logo-card__deco"></div>
+                                <span class="ndp-logo-card__hint"><i class="fas fa-hand-pointer"></i> Descubrir logo</span>
+                            </div>
+                            <div class="ndp-logo-card__back">
+                                <img src="./img/logosClientes/logoOdonti.webp" alt="Odontie">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ndp-logo-card">
+                        <div class="ndp-logo-card__inner">
+                            <div class="ndp-logo-card__front">
+                                <div class="ndp-logo-card__deco"></div>
+                                <span class="ndp-logo-card__name">Golden Power</span>
+                                <div class="ndp-logo-card__deco"></div>
+                                <span class="ndp-logo-card__hint"><i class="fas fa-hand-pointer"></i> Descubrir logo</span>
+                            </div>
+                            <div class="ndp-logo-card__back">
+                                <img src="./img/logosClientes/logoGoldenPower.webp" alt="Golden Power">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ndp-logo-card">
+                        <div class="ndp-logo-card__inner">
+                            <div class="ndp-logo-card__front">
+                                <div class="ndp-logo-card__deco"></div>
+                                <span class="ndp-logo-card__name">MIMACS</span>
+                                <div class="ndp-logo-card__deco"></div>
+                                <span class="ndp-logo-card__hint"><i class="fas fa-hand-pointer"></i> Descubrir logo</span>
+                            </div>
+                            <div class="ndp-logo-card__back">
+                                <img src="./img/logosClientes/logoMimacs.webp" alt="MIMACS">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ndp-logo-card">
+                        <div class="ndp-logo-card__inner">
+                            <div class="ndp-logo-card__front">
+                                <div class="ndp-logo-card__deco"></div>
+                                <span class="ndp-logo-card__name">Grupo Bapa</span>
+                                <div class="ndp-logo-card__deco"></div>
+                                <span class="ndp-logo-card__hint"><i class="fas fa-hand-pointer"></i> Descubrir logo</span>
+                            </div>
+                            <div class="ndp-logo-card__back">
+                                <img src="./img/logosClientes/logoCliente5.webp" alt="Grupo Bapa">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ndp-logo-card">
+                        <div class="ndp-logo-card__inner">
+                            <div class="ndp-logo-card__front">
+                                <div class="ndp-logo-card__deco"></div>
+                                <span class="ndp-logo-card__name">Mayra Nutriologa</span>
+                                <div class="ndp-logo-card__deco"></div>
+                                <span class="ndp-logo-card__hint"><i class="fas fa-hand-pointer"></i> Descubrir logo</span>
+                            </div>
+                            <div class="ndp-logo-card__back">
+                                <img src="./img/logosClientes/logoMayraColor.webp" alt="Mayra Nutriologa">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ndp-logo-card">
+                        <div class="ndp-logo-card__inner">
+                            <div class="ndp-logo-card__front">
+                                <div class="ndp-logo-card__deco"></div>
+                                <span class="ndp-logo-card__name">Fundación Atenea</span>
+                                <div class="ndp-logo-card__deco"></div>
+                                <span class="ndp-logo-card__hint"><i class="fas fa-hand-pointer"></i> Descubrir logo</span>
+                            </div>
+                            <div class="ndp-logo-card__back">
+                                <img src="./img/logosClientes/logoFundacionAtenea.webp" alt="Fundación Atenea">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Proceso de Creación de Logo -->
+            <div class="ndp-proceso-section">
+                <h3 class="ndp-section__title">Proceso de Creación de un Logo</h3>
+                <div class="ndp-pasos-grid">
+
+                    <div class="ndp-paso">
+                        <div class="ndp-paso__img-wrap">
+                            <img src="./img/naimingDisenoProduccion/pasoCreacionLogo-1.webp" alt="Conceptualización del logo">
+                        </div>
+                        <div class="ndp-paso__content">
+                            <span class="ndp-paso__num">01</span>
+                            <h4 class="ndp-paso__title">Conceptualización</h4>
+                            <p class="ndp-paso__desc">En esta fase dibujamos y conceptualizamos las primeras ideas. Exploramos formas, trazos y simbolismos que mejor representen la esencia de tu marca antes de pasar a la etapa digital.</p>
+                        </div>
+                    </div>
+
+                    <div class="ndp-paso">
+                        <div class="ndp-paso__img-wrap">
+                            <img src="./img/naimingDisenoProduccion/pasoCreacionLogo-2.webp" alt="Elementos y conceptos del cliente">
+                        </div>
+                        <div class="ndp-paso__content">
+                            <span class="ndp-paso__num">02</span>
+                            <h4 class="ndp-paso__title">Elementos & Conceptos</h4>
+                            <p class="ndp-paso__desc">Recopilamos todos los elementos visuales que el cliente desea incorporar: referencias estéticas, conceptos clave y los valores que la marca debe transmitir.</p>
+                        </div>
+                    </div>
+
+                    <div class="ndp-paso">
+                        <div class="ndp-paso__img-wrap">
+                            <img src="./img/naimingDisenoProduccion/pasoCreacionLogo-3.webp" alt="Refinamiento de la identidad visual">
+                        </div>
+                        <div class="ndp-paso__content">
+                            <span class="ndp-paso__num">03</span>
+                            <h4 class="ndp-paso__title">Refinamiento</h4>
+                            <p class="ndp-paso__desc">Combinamos y afinamos cada concepto seleccionado, ajustando colores, tipografías y composición para construir una identidad visual coherente y con personalidad propia.</p>
+                        </div>
+                    </div>
+
+                    <div class="ndp-paso ndp-paso--highlight">
+                        <div class="ndp-paso__img-wrap">
+                            <img src="./img/naimingDisenoProduccion/pasoCreacionLogo-4.webp" alt="Logo final terminado">
+                        </div>
+                        <div class="ndp-paso__content">
+                            <span class="ndp-paso__num">04</span>
+                            <h4 class="ndp-paso__title">Logo Final</h4>
+                            <p class="ndp-paso__desc">El resultado: un logo limpio, profesional y con carácter. Cada línea y color tiene un propósito, listo para representar tu marca en cualquier medio y formato.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- Bloque: Logos Rediseñados -->
+            <div class="ndp-section">
+                <h3 class="ndp-section__title">Logos que hemos <span>Rediseñado</span></h3>
+                <div class="ndp-rediseños-grid">
+
+                    <!-- Rediseño 1: Grupo BAPA -->
+                    <div class="ndp-rediseño-card">
+                        <div class="ndp-rediseño-pair">
+                            <div class="ndp-rediseño-lado ndp-rediseño-lado--antes">
+                                <span class="ndp-rediseño-etiqueta">Antes</span>
+                                <div class="ndp-rediseño-img-wrap">
+                                    <img src="./img/LogosRediseniados/LogoRediseniado-2.webp" alt="Logo Grupo BAPA antes del rediseño">
+                                </div>
+                            </div>
+                            <div class="ndp-rediseño-flecha">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                            <div class="ndp-rediseño-lado ndp-rediseño-lado--despues">
+                                <span class="ndp-rediseño-etiqueta ndp-rediseño-etiqueta--despues">Después</span>
+                                <div class="ndp-rediseño-img-wrap">
+                                    <img src="./img/naimingDisenoProduccion/newLogoMimamcs-removebg.png" alt="Logo Grupo BAPA rediseñado">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <p class="ndp-rediseño-empresa">Grupo BAPA</p> -->
+                    </div>
+
+                    <!-- Rediseño 2: MMAC -->
+                    <div class="ndp-rediseño-card">
+                        <div class="ndp-rediseño-pair">
+                            <div class="ndp-rediseño-lado ndp-rediseño-lado--antes">
+                                <span class="ndp-rediseño-etiqueta">Antes</span>
+                                <div class="ndp-rediseño-img-wrap">
+                                    <img src="./img/LogosRediseniados/LogoRediseniado-1.webp" alt="Logo MIMACS antes del rediseño">
+                                </div>
+                            </div>
+                            <div class="ndp-rediseño-flecha">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                            <div class="ndp-rediseño-lado ndp-rediseño-lado--despues">
+                                <span class="ndp-rediseño-etiqueta ndp-rediseño-etiqueta--despues">Después</span>
+                                <div class="ndp-rediseño-img-wrap">
+                                    <img src="./img/logosClientes/logoCliente6.webp" alt="Logo MMAC rediseñado">
+                                </div>
+                            </div>
+                        </div>
+                       <!--  <p class="ndp-rediseño-empresa">MMAC</p> -->
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Bloque: Diseño de imagen corporativa -->
+            <div class="ndp-section">
+                <h3 class="ndp-section__title">Diseño de imagen corporativa</h3>
+                <p class="ndp-dic-desc">Construimos la identidad visual de tu marca de manera integral. Desde la paleta de colores y tipografías hasta los elementos gráficos y su aplicación en cada medio, creamos un sistema coherente que comunica los valores de tu empresa y genera una impresión profesional y memorable en cada punto de contacto.</p>
+                <div class="ndp-dic-imgs">
+                    <div class="ndp-dic-card ndp-dic-card--solid">
+                        <img src="./img/naimingDisenoProduccion/imagenCorporativa-2.webp" alt="Diseño de imagen corporativa">
+                    </div>
+                    <div class="ndp-dic-card ndp-dic-card--transparent">
+                        <img src="./img/naimingDisenoProduccion/imagenCorporativa-1.webp" alt="Diseño de imagen corporativa">
+                    </div>
+                    <div class="ndp-dic-card ndp-dic-card--transparent">
+                        <img src="./img/naimingDisenoProduccion/imagenCorporativa-3.webp" alt="Diseño de imagen corporativa">
+                    </div>
+                    <div class="ndp-dic-card ndp-dic-card--transparent">
+                        <img src="./img/naimingDisenoProduccion/imagenCorporativa-4.webp" alt="Diseño de imagen corporativa">
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Bloque 5: Creación y producción de videos -->
+            <div class="ndp-section">
+                <h3 class="ndp-section__title">Creación y producción de videos</h3>
+                <div class="ndp-videos-row">
+                    <lite-youtube videoid="4p4e-FAav2I" playlabel="Producción - RG Gestión de Marcas"></lite-youtube>
+                    <lite-youtube videoid="oDkjAJSqbG8" playlabel="Producción - RG Gestión de Marcas"></lite-youtube>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="inv-cta">
+                <a href="./contacto.html" class="cta-button">Contactar ahora</a>
+            </div>
+
+
+            <!-- === NUESTROS CLIENTES === -->
+            <section class="main-clientes reveal">
+                <div class="main-clientes__header">
+                    <span class="main-clientes__eyebrow">Confían en nosotros</span>
+                    <h2 class="main-clientes__title">Nuestros Clientes</h2>
+                    <div class="main-clientes__divider"></div>
+                </div>
+                <div class="brand-carousel">
+                    <div class="brand-track">
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente1.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente2.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente3.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente4.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente5.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente6.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente7.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente8.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente9.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/SalgadoProducciones.webp"
+                                alt="Salgado Producciones"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/Upaep.webp" alt="Upaep"></div>
+                        <!-- Duplicados para scroll infinito -->
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente1.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente2.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente3.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente4.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente5.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente6.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente7.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente8.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente9.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/SalgadoProducciones.webp"
+                                alt="Salgado Producciones"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/Upaep.webp" alt="Upaep"></div>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </div>
+
+    <!-- SECCIÓN: DISEÑO WEB -->
+    <div id="sec-web" class="screen">
+        <section class="service-section-A">
+            <div class="back-btn-container"><button onclick="goBack()" class="btn-back"><i
+                        class="fas fa-arrow-left"></i> Volver</button></div>
+            <div class="web-section-centered">
+                <h2 class="service-title">Diseño <span>Web</span></h2>
+                <p class="web-section-centered__desc">
+                    Creamos tu página web para proporcionar visibilidad global 24/7 a tu marca, aumentar la credibilidad
+                    y el profesionalismo de tu empresa, y funcionar como un escaparate digital que atraiga y fidelice
+                    clientes.
+                </p>
+                <div class="web-videos-row">
+                    <!-- Reemplaza VIDEO_ID_1 y VIDEO_ID_2 con los IDs reales de YouTube -->
+                    <lite-youtube videoid="zYmJaRRZpVE" playlabel="Diseño Web - RG Gestión de Marcas"></lite-youtube>
+                    <lite-youtube videoid="jw9e-Y2gDBQ" playlabel="Diseño Web - RG Gestión de Marcas"></lite-youtube>
+                </div>
+                <a href="./contacto.html" class="cta-button">Contactar ahora</a>
+            </div>
+
+            <!-- === NUESTROS CLIENTES === -->
+            <section class="main-clientes reveal">
+                <div class="main-clientes__header">
+                    <span class="main-clientes__eyebrow">Confían en nosotros</span>
+                    <h2 class="main-clientes__title">Nuestros Clientes</h2>
+                    <div class="main-clientes__divider"></div>
+                </div>
+                <div class="brand-carousel">
+                    <div class="brand-track">
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente1.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente2.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente3.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente4.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente5.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente6.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente7.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente8.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente9.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/SalgadoProducciones.webp"
+                                alt="Salgado Producciones"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/Upaep.webp" alt="Upaep"></div>
+                        <!-- Duplicados para scroll infinito -->
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente1.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente2.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente3.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente4.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente5.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente6.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente7.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente8.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente9.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/SalgadoProducciones.webp"
+                                alt="Salgado Producciones"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/Upaep.webp" alt="Upaep"></div>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </div>
+
+    <!-- SECCIÓN: GESTIÓN DE REDES SOCIALES -->
+    <div id="sec-redes" class="screen">
+        <section class="service-section-A">
+            <div class="back-btn-container"><button onclick="goBack()" class="btn-back"><i
+                        class="fas fa-arrow-left"></i> Volver</button></div>
+
+            <!-- Hero centrado -->
+            <div class="redes-hero">
+                <h2 class="service-title">Gestión de <span>Redes Sociales</span></h2>
+                <p class="redes-hero__desc">
+                    Creamos un plan personalizado de acuerdo con las necesidades de tu marca para aumentar la
+                    visibilidad de tu negocio, construir una reputación sólida y permitir la interacción directa con tus
+                    consumidores.
+                </p>
+            </div>
+
+            <!-- Showcase de clientes -->
+            <div class="clientes-showcase">
+                <p class="clientes-showcase__label">Selecciona un cliente para conocer su proyecto</p>
+                <div class="clientes-grid">
+                    <div class="cliente-card" data-project="proyecto1">
+                        <div class="cliente-card__logo">
+                            <img src="./img/logosClientes/logoCliente5.webp" alt="Cliente 1">
+                        </div>
+                        <span class="cliente-card__cta">Ver trabajo <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                    <div class="cliente-card" data-project="proyecto2">
+                        <div class="cliente-card__logo">
+                            <img src="./img/logosClientes/LogoEnptrotech.webp" alt="Cliente 2">
+                        </div>
+                        <span class="cliente-card__cta">Ver trabajo <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                    <div class="cliente-card" data-project="proyecto3">
+                        <div class="cliente-card__logo">
+                            <img src="./img/logosClientes/UpaepFundation.webp" alt="Cliente 3">
+                        </div>
+                        <span class="cliente-card__cta">Ver trabajo <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                    <div class="cliente-card" data-project="proyecto4">
+                        <div class="cliente-card__logo">
+                            <img src="./img/logosClientes/LogoTioPoncho.webp" alt="Cliente 4">
+                        </div>
+                        <span class="cliente-card__cta">Ver trabajo <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                    <div class="cliente-card" data-project="proyecto5">
+                        <div class="cliente-card__logo">
+                            <img src="./img/logosClientes/CieloDental.webp" alt="Cliente 5">
+                        </div>
+                        <span class="cliente-card__cta">Ver trabajo <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Panel de proyecto (oculto por defecto) -->
+            <div class="redes-project" id="redes-project-panel" style="display:none;">
+                <button class="redes-project__close"><i class="fas fa-times"></i></button>
+                <h3 class="redes-project__title" id="redes-project-title"></h3>
+                <p class="redes-project__desc" id="redes-project-desc"></p>
+                <div class="redes-project__gallery" id="redes-project-gallery"></div>
+                <div class="redes-project__videos-section" id="redes-project-videos-section" style="display:none;">
+                    <h3 class="redes-project__videos-title">Videos</h3>
+                    <div class="redes-project__videos" id="redes-project-videos"></div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="inv-cta">
+                <a href="./contacto.html" class="cta-button">Contactar ahora</a>
+            </div>
+
+            <!-- === NUESTROS CLIENTES === -->
+            <section class="main-clientes reveal">
+                <div class="main-clientes__header">
+                    <span class="main-clientes__eyebrow">Confían en nosotros</span>
+                    <h2 class="main-clientes__title">Nuestros Clientes</h2>
+                    <div class="main-clientes__divider"></div>
+                </div>
+                <div class="brand-carousel">
+                    <div class="brand-track">
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente1.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente2.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente3.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente4.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente5.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente6.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente7.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente8.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente9.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/SalgadoProducciones.webp"
+                                alt="Salgado Producciones"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/Upaep.webp" alt="Upaep"></div>
+                        <!-- Duplicados para scroll infinito -->
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente1.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente2.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente3.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente4.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente5.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente6.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente7.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente8.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente9.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/SalgadoProducciones.webp"
+                                alt="Salgado Producciones"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/Upaep.webp" alt="Upaep"></div>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </div>
+
+    <!-- SECCIÓN: CURSOS Y CAPACITACIÓN -->
+    <div id="sec-cursos" class="screen">
+        <section class="service-section-A">
+            <div class="back-btn-container"><button onclick="goBack()" class="btn-back"><i
+                        class="fas fa-arrow-left"></i> Volver</button></div>
+            <div class="content-wrapper">
+                <div class="info-col">
+                    <h2 class="service-title">Cursos y <span>Capacitación</span></h2>
+                    <p class="service-description">
+                        Generamos e impartimos cursos, capacitaciones y congresos para el personal de tu empresa, con el
+                        objetivo de aumentar su productividad, mejorar la calidad de sus labores y fomentar la
+                        innovación para adaptarse a los cambios del mercado.
+                    </p>
+                    <a href="./contacto.html" class="cta-button">Contactar ahora</a>
+                </div>
+                <div class="gallery-col">
+                    <div class="gallery-item"><img src="./img/cursosYCapacitacion/cursosYCapacitacion1.webp"
+                            alt="Cursos 1"></div>
+                    <div class="gallery-item"><img src="./img/cursosYCapacitacion/cursosYCapacitacion2.webp"
+                            alt="Cursos 2"></div>
+                    <div class="gallery-item"><img src="./img/cursosYCapacitacion/cursosYCapacitacion3.webp"
+                            alt="Cursos 3"></div>
+                    <div class="gallery-item"><img src="./img/cursosYCapacitacion/cursosYCapacitacion4.webp"
+                            alt="Cursos 4"></div>
+                    <ul class="inv-instruments" style="grid-column: 1 / -1">
+                        <li><i class="fas fa-trophy"></i> Primer congreso de habilidades gerenciales realizado en Querétaro para Enprotech</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- === NUESTROS CLIENTES === -->
+            <section class="main-clientes reveal">
+                <div class="main-clientes__header">
+                    <span class="main-clientes__eyebrow">Confían en nosotros</span>
+                    <h2 class="main-clientes__title">Nuestros Clientes</h2>
+                    <div class="main-clientes__divider"></div>
+                </div>
+                <div class="brand-carousel">
+                    <div class="brand-track">
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente1.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente2.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente3.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente4.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente5.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente6.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente7.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente8.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente9.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/SalgadoProducciones.webp"
+                                alt="Salgado Producciones"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/Upaep.webp" alt="Upaep"></div>
+                        <!-- Duplicados para scroll infinito -->
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente1.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente2.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente3.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente4.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente5.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente6.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente7.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente8.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/logoCliente9.webp" alt="Cliente"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/SalgadoProducciones.webp"
+                                alt="Salgado Producciones"></div>
+                        <div class="brand-item"><img src="./img/logosClientes/Upaep.webp" alt="Upaep"></div>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </div>
+
+    <!-- FLOATING SOCIAL ICONS -->
+    <div class="floating-social" id="floatingSocial">
+        <a href="https://www.facebook.com/RG.GestiondeMarcas" aria-label="Facebook" class="floating-social__link"
+            target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/rg_gestionmarcas" aria-label="Instagram" class="floating-social__link"
+            target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@rg_gestiondemarcas" aria-label="TikTok" class="floating-social__link"
+            target="_blank"><i class="fab fa-tiktok"></i></a>
+        <button class="floating-social__toggle" aria-label="Ver redes sociales">
+            <i class="fas fa-share-alt floating-social__icon-open"></i>
+            <i class="fas fa-times floating-social__icon-close"></i>
+        </button>
+    </div>
+
+    <script>
+        (function () {
+            var social = document.getElementById('floatingSocial');
+            social.querySelector('.floating-social__toggle').addEventListener('click', function () {
+                social.classList.toggle('is-open');
+            });
+        })();
+    </script>
+
+</body>
+</html>

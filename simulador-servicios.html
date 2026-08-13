@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- METADATOS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- STYLES -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/simulador.css">
+    <!-- FUENTES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js" defer></script>
+    <script src="./js/particles.js" defer></script>
+    <!-- jsPDF para descarga en PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+    <!-- La API key se maneja en el servidor (Vercel Serverless Function) -->
+    <!-- GENERAL -->
+    <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
+    <title>Simulador de Servicios | RG Agencia de Marketing</title>
+</head>
+<body>
+    <!-- PARTICLES -->
+    <div id="particles-js"></div>
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <nav class="nav">
+        <div class="containerLogo">
+            <a href="./index.html">
+                <img class="nav_logo" src="./img/logoRG.png" alt="Logo RG Agencia de Marketing">
+            </a>
+        </div>
+        <button class="nav_buttonMenu" id="menuBtn">
+            <svg class="nav_buttonMenuSVG"
+                width="40"
+                height="40"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke-width="2">
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+        <div class="circular_reveal_menu" id="menuOverlay">
+            <ul class="menu_items">
+                <li><a href="./index.html">Inicio</a></li>
+                <li><a href="./nosotros.html">Sobre Nosotros</a></li>
+                <li><a href="./contacto.html">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- MAIN -->
+    <main class="main">
+        <!-- BOTÓN VOLVER -->
+        <div class="back-btn-container">
+            <button onclick="window.location.href='./index.html'" class="btn-back"><i class="fas fa-arrow-left"></i> Volver</button>
+        </div>
+
+        <!-- ENCABEZADO -->
+        <section class="simulador-header">
+            <h1>Simulador de <span class="highlight">Servicios</span></h1>
+            <p>Describe tu negocio, su problematica y nuestra IA analizar&aacute; qu&eacute; servicios de marketing necesitas, priorizados por impacto.</p>
+        </section>
+
+        <!-- FORMULARIO -->
+        <section class="simulador-form-section">
+            <div class="simulador-card">
+                <label class="simulador-label" for="negocioInput">Describe tu negocio y su problematica</label>
+                <textarea
+                    class="simulador-textarea"
+                    id="negocioInput"
+                    placeholder="Ej: Tengo una cafeter&iacute;a artesanal en el centro de la ciudad. Llevamos 2 a&ntilde;os operando, tenemos presencia b&aacute;sica en Instagram pero queremos crecer y llegar a m&aacute;s clientes j&oacute;venes..."
+                    maxlength="500"
+                ></textarea>
+                <div class="char-counter" id="charCounter">0 / 500</div>
+                <div class="simulador-actions">
+                    <button class="btn-analizar" id="btnAnalizar" disabled>
+                        <span class="spinner"></span>
+                        <i class="fas fa-bolt btn-icon"></i>
+                        <span class="btn-text">Analizar mi negocio</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ESTADO DE CARGA -->
+        <section class="loading-section" id="loadingSection">
+            <div class="loading-animation">
+                <div class="loading-bars">
+                    <div class="loading-bar"></div>
+                    <div class="loading-bar"></div>
+                    <div class="loading-bar"></div>
+                    <div class="loading-bar"></div>
+                    <div class="loading-bar"></div>
+                </div>
+                <p class="loading-text">Analizando tu negocio con <span>inteligencia artificial</span>...</p>
+            </div>
+        </section>
+
+        <!-- ERROR -->
+        <section class="error-section" id="errorSection">
+            <div class="error-card">
+                <i class="fas fa-exclamation-triangle"></i>
+                <h3>Ocurri&oacute; un error</h3>
+                <p id="errorMessage">No pudimos completar el an&aacute;lisis. Por favor intenta de nuevo.</p>
+                <button class="btn-reintentar" id="btnReintentar">
+                    <i class="fas fa-redo"></i> Reintentar
+                </button>
+            </div>
+        </section>
+
+        <!-- RESULTADOS -->
+        <section class="resultados-section" id="resultadosSection">
+            <div id="resultadosContent">
+                <!-- Análisis del negocio -->
+                <div class="resultado-analisis" id="analisisBox">
+                    <h2><i class="fas fa-lightbulb"></i> An&aacute;lisis de tu negocio</h2>
+                    <p id="analisisTexto"></p>
+                </div>
+
+                <!-- Servicios priorizados -->
+                <h2 class="servicios-titulo">Servicios <span class="highlight">recomendados</span></h2>
+                <div class="servicios-grid" id="serviciosGrid">
+                    <!-- Se llena dinámicamente -->
+                </div>
+            </div>
+
+            <!-- Acciones -->
+            <div class="resultados-actions">
+                <button class="btn-descargar" id="btnDescargar">
+                    <i class="fas fa-download"></i> Descargar resumen
+                </button>
+                <button class="btn-cotizacion" id="btnCotizacion">
+                    <i class="fab fa-whatsapp"></i> Solicitar una cotizaci&oacute;n
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-col footer-brand">
+                <img src="./img/logoRG.png" alt="Logo RG" class="footer-brand-logo">
+                <p>Somos una agencia especializada en gestión de marcas. Transformamos negocios a través de estrategias de marketing integrales, diseño y comunicación efectiva.</p>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/RG.GestiondeMarcas" aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/rg_gestionmarcas" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@rg_gestiondemarcas" aria-label="TikTok" target="_blank"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Navegación</h3>
+                <ul>
+                    <li><a href="./index.html">Inicio</a></li>
+                    <li><a href="./nosotros.html">Sobre Nosotros</a></li>
+                    <li><a href="./simulador-servicios.html">Simulador IA</a></li>
+                    <li><a href="./contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Servicios</h3>
+                <ul>
+                    <li><a href="./contacto.html">Investigación de Mercados</a></li>
+                    <li><a href="./contacto.html">Naming, Diseño y Producción</a></li>
+                    <li><a href="./contacto.html">Diseño Web</a></li>
+                    <li><a href="./contacto.html">Gestión de Redes Sociales</a></li>
+                    <li><a href="./contacto.html">Cursos y Capacitación</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contacto</h3>
+                <div class="footer-contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>contacto@rg-gestiondemarcas.com</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>ventas@rg-gestiondemarcas.com</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+52 222 446 7947</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 RG Gestión de Marcas. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+    /* La API key se carga desde config.js (ver config.example.js) */
+
+    /* Lista de servicios que ofrece RG Gestión de Marcas */
+    const SERVICIOS_RG = [
+        'Investigación de mercados',
+        'Naming, diseño y producción',
+        'Diseño Web (Landing pages, E-commerce, UX/UI)',
+        'Gestión de Redes Sociales (Community Management)',
+        'Cursos y Capacitación',
+    ];
+
+    /* ============================================================
+       ELEMENTOS DEL DOM
+       ============================================================ */
+    const negocioInput = document.getElementById('negocioInput');
+    const charCounter = document.getElementById('charCounter');
+    const btnAnalizar = document.getElementById('btnAnalizar');
+    const loadingSection = document.getElementById('loadingSection');
+    const errorSection = document.getElementById('errorSection');
+    const errorMessage = document.getElementById('errorMessage');
+    const btnReintentar = document.getElementById('btnReintentar');
+    const resultadosSection = document.getElementById('resultadosSection');
+    const analisisTexto = document.getElementById('analisisTexto');
+    const serviciosGrid = document.getElementById('serviciosGrid');
+    const btnDescargar = document.getElementById('btnDescargar');
+    const btnCotizacion = document.getElementById('btnCotizacion');
+    const WHATSAPP_NUMBER = '522224467947';
+    /* Variable para guardar la descripción usada en el último análisis */
+    let ultimaDescripcion = ''; 
+
+    /* ============================================================
+       EVENTOS
+       ============================================================ */
+
+    /* Contador de caracteres y habilitación del botón */
+    negocioInput.addEventListener('input', function() {
+        const len = this.value.length;
+        charCounter.textContent = len + ' / 500';
+        charCounter.classList.toggle('active', len > 0);
+        charCounter.classList.toggle('warning', len >= 450);
+        btnAnalizar.disabled = len < 20;
+    });
+
+    /* Botón principal de análisis */
+    btnAnalizar.addEventListener('click', function() {
+        analizarNegocio();
+    });
+
+    /* Reintentar tras error */
+    btnReintentar.addEventListener('click', function() {
+        analizarNegocio();
+    });
+
+    /* Solicitar cotización por WhatsApp */
+    btnCotizacion.addEventListener('click', function() {
+        enviarCotizacionWhatsApp();
+    });
+
+    /* Descargar resumen en PDF */
+    btnDescargar.addEventListener('click', function() {
+        descargarResumen();
+    });
+
+    /* ============================================================
+       FUNCIÓN PRINCIPAL: ANALIZAR NEGOCIO
+       ============================================================ */
+    async function analizarNegocio() {
+        const descripcion = negocioInput.value.trim();
+
+        /* Validación */
+        if (descripcion.length < 20) {
+            negocioInput.focus();
+            return;
+        }
+
+        ultimaDescripcion = descripcion;
+
+        /* Cambiar a estado de carga */
+        mostrarEstado('loading');
+        btnAnalizar.classList.add('loading');
+        btnAnalizar.disabled = true;
+
+        try {
+            const resultado = await llamarClaudeAPI(descripcion);
+            mostrarResultados(resultado);
+            mostrarEstado('resultados');
+        } catch (error) {
+            console.error('Error al analizar:', error);
+            errorMessage.textContent = error.message || 'No pudimos completar el análisis. Por favor intenta de nuevo.';
+            mostrarEstado('error');
+        } finally {
+            btnAnalizar.classList.remove('loading');
+            btnAnalizar.disabled = false;
+        }
+    }
+
+    /* ============================================================
+       LLAMADA A LA API DE CLAUDE (ANTHROPIC)
+       ============================================================ */
+    async function llamarClaudeAPI(descripcion) {
+        const listaServicios = SERVICIOS_RG.join(', ');
+
+        const prompt = 'Eres consultor de marketing. Analiza este negocio: ' + descripcion +
+            '. Servicios disponibles: ' + listaServicios +
+            '. Proporciona: 1) Análisis breve del negocio 2) Top servicios prioritarios en orden de importancia 3) Explicación de 2-3 líneas por cada servicio de por qué es prioritario.' +
+            '\n\nIMPORTANTE: Responde ÚNICAMENTE con un JSON válido con esta estructura exacta, sin texto adicional antes o después:\n' +
+            '{"analisis": "texto del análisis del negocio", "servicios": [{"nombre": "Nombre del servicio", "explicacion": "Por qué es prioritario"}]}';
+
+        const response = await fetch('/api/analyze', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                model: 'claude-sonnet-4-20250514',
+                max_tokens: 1500,
+                messages: [
+                    {
+                        role: 'user',
+                        content: prompt
+                    }
+                ]
+            })
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json().catch(function() { return {}; });
+            if (response.status === 401) {
+                throw new Error('API key inválida. Configura tu API key de Anthropic en el archivo.');
+            }
+            if (response.status === 429) {
+                throw new Error('Demasiadas solicitudes. Espera un momento e intenta de nuevo.');
+            }
+            throw new Error(errorData.error?.message || 'Error al conectar con la API (código ' + response.status + ')');
+        }
+
+        const data = await response.json();
+        const textoRespuesta = data.content[0].text;
+
+        /* Parsear la respuesta JSON de Claude */
+        try {
+            /* Buscar el JSON dentro de la respuesta por si viene con texto extra */
+            var jsonMatch = textoRespuesta.match(/\{[\s\S]*\}/);
+            if (!jsonMatch) {
+                throw new Error('No se encontró JSON en la respuesta');
+            }
+            return JSON.parse(jsonMatch[0]);
+        } catch (parseError) {
+            console.error('Error parseando respuesta:', textoRespuesta);
+            throw new Error('La respuesta de la IA no tuvo el formato esperado. Intenta de nuevo.');
+        }
+    }
+
+    /* ============================================================
+       MOSTRAR RESULTADOS EN EL DOM
+       ============================================================ */
+    function mostrarResultados(data) {
+        /* Análisis del negocio */
+        analisisTexto.textContent = data.analisis || 'Análisis no disponible.';
+
+        /* Servicios priorizados */
+        serviciosGrid.innerHTML = '';
+
+        var servicios = data.servicios || [];
+        servicios.forEach(function(servicio, index) {
+            var card = document.createElement('div');
+            card.className = 'servicio-card';
+            card.innerHTML =
+                '<div class="servicio-rank">' + (index + 1) + '</div>' +
+                '<div class="servicio-info">' +
+                    '<h3>' + escapeHTML(servicio.nombre) + '</h3>' +
+                    '<p>' + escapeHTML(servicio.explicacion) + '</p>' +
+                '</div>';
+            serviciosGrid.appendChild(card);
+        });
+
+        /* Scroll suave a resultados */
+        setTimeout(function() {
+            resultadosSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+    }
+
+    /* ============================================================
+       GESTIÓN DE ESTADOS DE LA UI
+       ============================================================ */
+    function mostrarEstado(estado) {
+        /* Ocultar todo primero */
+        loadingSection.classList.remove('active');
+        errorSection.classList.remove('active');
+        resultadosSection.classList.remove('active');
+
+        switch (estado) {
+            case 'loading':
+                loadingSection.classList.add('active');
+                break;
+            case 'error':
+                errorSection.classList.add('active');
+                break;
+            case 'resultados':
+                resultadosSection.classList.add('active');
+                break;
+            case 'form':
+                /* Solo el formulario visible, los demás ya están ocultos */
+                break;
+        }
+    }
+
+    /* ============================================================
+       DESCARGAR RESUMEN EN PDF
+       ============================================================
+       Genera un documento HTML temporal con estilos propios y lo
+       convierte a PDF usando html2pdf.js (CDN).
+       ============================================================ */
+    function descargarResumen() {
+        var analisis = analisisTexto.textContent;
+        var cards = serviciosGrid.querySelectorAll('.servicio-card');
+
+        var logoImg = new Image();
+        logoImg.src = './img/logoRG.png';
+        logoImg.onload = function() {
+
+        var jsPDF = window.jspdf.jsPDF;
+        var doc = new jsPDF({ unit: 'mm', format: 'a4' });
+
+        /* Paleta del sitio web */
+        var bg       = [18, 18, 18];    /* #121212 */
+        var cardBg   = [30, 30, 30];    /* #1e1e1e */
+        var accent   = [244, 167, 28];  /* #f4a71c */
+        var white    = [255, 255, 255]; /* #ffffff */
+        var textMain = [226, 232, 240]; /* #e2e8f0 */
+        var textGray = [179, 179, 179]; /* #b3b3b3 */
+        var divider  = [51, 51, 51];    /* #333333 */
+
+        var pageW = 210;
+        var pageH = 297;
+        var margin = 20;
+        var contentW = pageW - margin * 2;
+        var y = 0;
+
+        var logoW = 28;
+        var logoH = logoW * (logoImg.naturalHeight / logoImg.naturalWidth);
+
+        /* Pinta el fondo oscuro de la página */
+        function paintBg() {
+            doc.setFillColor(bg[0], bg[1], bg[2]);
+            doc.rect(0, 0, pageW, pageH, 'F');
+        }
+
+        /* Salto de página con fondo */
+        function checkPage(needed) {
+            if (y + needed > pageH - 20) {
+                doc.addPage();
+                paintBg();
+                doc.addImage(logoImg, 'PNG', pageW - margin - logoW, 7, logoW, logoH);
+                y = 25;
+            }
+        }
+
+        /* Primera página */
+        paintBg();
+        doc.addImage(logoImg, 'PNG', pageW - margin - logoW, 7, logoW, logoH);
+        y = 30;
+
+        /* ── Encabezado ── */
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(22);
+        doc.setTextColor(white[0], white[1], white[2]);
+        doc.text('RG Gesti\u00f3n de Marcas', pageW / 2, y, { align: 'center' });
+        y += 9;
+
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(11);
+        doc.setTextColor(textGray[0], textGray[1], textGray[2]);
+        doc.text('Reporte de An\u00e1lisis de Servicios', pageW / 2, y, { align: 'center' });
+        y += 7;
+
+        doc.setDrawColor(accent[0], accent[1], accent[2]);
+        doc.setLineWidth(0.8);
+        doc.line(pageW / 2 - 15, y, pageW / 2 + 15, y);
+        y += 14;
+
+        /* ── An\u00e1lisis del Negocio ── */
+        var textPad = 8;
+        var analisisLines = doc.splitTextToSize(analisis, contentW - textPad * 2);
+        var boxH = textPad + 9 + analisisLines.length * 5 + textPad;
+
+        checkPage(boxH);
+
+        doc.setFillColor(cardBg[0], cardBg[1], cardBg[2]);
+        doc.roundedRect(margin, y, contentW, boxH, 3, 3, 'F');
+        doc.setFillColor(accent[0], accent[1], accent[2]);
+        doc.rect(margin, y + 2, 1.2, boxH - 4, 'F');
+
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(13);
+        doc.setTextColor(accent[0], accent[1], accent[2]);
+        doc.text('An\u00e1lisis del Negocio', margin + textPad, y + textPad + 4);
+
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(10);
+        doc.setTextColor(textMain[0], textMain[1], textMain[2]);
+        doc.text(analisisLines, margin + textPad, y + textPad + 13);
+
+        y += boxH + 12;
+
+        /* ── Servicios Recomendados ── */
+        checkPage(12);
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(15);
+        doc.setTextColor(white[0], white[1], white[2]);
+        doc.text('Servicios Recomendados', pageW / 2, y, { align: 'center' });
+        y += 10;
+
+        cards.forEach(function(card, i) {
+            var nombre = card.querySelector('h3').textContent;
+            var explicacion = card.querySelector('p').textContent;
+            var expLines = doc.splitTextToSize(explicacion, contentW - 24);
+            var cardH = 8 + 7 + expLines.length * 4.5 + 6;
+
+            checkPage(cardH + 4);
+
+            /* Fondo de la tarjeta */
+            doc.setFillColor(cardBg[0], cardBg[1], cardBg[2]);
+            doc.roundedRect(margin, y, contentW, cardH, 2, 2, 'F');
+            doc.setFillColor(accent[0], accent[1], accent[2]);
+            doc.rect(margin, y + 1, 0.8, cardH - 2, 'F');
+
+            /* N\u00famero */
+            doc.setFillColor(accent[0], accent[1], accent[2]);
+            doc.circle(margin + 9, y + cardH / 2, 4.5, 'F');
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(11);
+            doc.setTextColor(bg[0], bg[1], bg[2]);
+            doc.text(String(i + 1), margin + 9, y + cardH / 2 + 1.5, { align: 'center' });
+
+            /* Nombre del servicio */
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(11);
+            doc.setTextColor(white[0], white[1], white[2]);
+            doc.text(nombre, margin + 18, y + 9);
+
+            /* Explicaci\u00f3n */
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(9);
+            doc.setTextColor(textGray[0], textGray[1], textGray[2]);
+            doc.text(expLines, margin + 18, y + 16);
+
+            y += cardH + 4;
+        });
+
+        /* ── Llamada a la acción ── */
+        checkPage(38);
+        doc.setFillColor(accent[0], accent[1], accent[2]);
+        doc.roundedRect(margin, y, contentW, 32, 3, 3, 'F');
+
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(11);
+        doc.setTextColor(bg[0], bg[1], bg[2]);
+        doc.text('\u00bfListo para dar el siguiente paso?', pageW / 2, y + 8, { align: 'center' });
+
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(9);
+        doc.text('Envi\u00e1nos este documento y nos ponemos en contacto para hacerte una cotizaci\u00f3n personalizada.', pageW / 2, y + 14, { align: 'center' });
+
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(9);
+        doc.text('Email: contacto@rgmarketing.com   |   WhatsApp: +52 222 446 7947', pageW / 2, y + 23, { align: 'center' });
+        y += 38;
+
+        /* ── Footer ── */
+        checkPage(15);
+        y += 6;
+        doc.setDrawColor(divider[0], divider[1], divider[2]);
+        doc.setLineWidth(0.2);
+        doc.line(margin, y, pageW - margin, y);
+        y += 5;
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(7);
+        doc.setTextColor(textGray[0], textGray[1], textGray[2]);
+        doc.text('Generado por RG Gesti\u00f3n de Marcas \u2014 Simulador de Servicios IA', pageW / 2, y, { align: 'center' });
+
+        doc.save('RG-Analisis-Servicios.pdf');
+
+        }; /* fin logoImg.onload */
+    }
+
+    /* ============================================================
+       ENVIAR COTIZACIÓN POR WHATSAPP
+       ============================================================ */
+    function enviarCotizacionWhatsApp() {
+        var analisis = analisisTexto.textContent;
+        var cards = serviciosGrid.querySelectorAll('.servicio-card');
+
+        /* Construir lista de servicios con números emoji */
+        var numerosEmoji = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣'];
+        var listaServicios = '';
+        cards.forEach(function(card, i) {
+            var nombre = card.querySelector('h3').textContent;
+            var emoji = numerosEmoji[i] || (i + 1) + '.';
+            listaServicios += emoji + ' ' + nombre + '\n';
+        });
+
+        /* Construir mensaje profesional */
+        var mensaje = '🚀 *Solicitud de Cotización — RG Gestión de Marcas*\n\n' +
+            'Hola, me interesa solicitar una cotización basada en el análisis de mi negocio realizado con su simulador de servicios IA.\n\n' +
+            '📋 *Análisis de mi negocio:*\n' + analisis + '\n\n' +
+            '⭐ *Servicios recomendados:*\n' + listaServicios + '\n' +
+            '💬 Quedo atento a su respuesta. ¡Gracias!';
+
+        /* Abrir WhatsApp con el mensaje */
+        var url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(mensaje);
+        window.open(url, '_blank');
+    }
+
+    /* ============================================================
+       UTILIDADES
+       ============================================================ */
+
+    /* Escapar HTML para prevenir XSS */
+    function escapeHTML(str) {
+        var div = document.createElement('div');
+        div.appendChild(document.createTextNode(str));
+        return div.innerHTML;
+    }
+
+    /* ============================================================
+       MENÚ DE NAVEGACIÓN (igual que en las otras páginas)
+       ============================================================ */
+    var menuBtn = document.getElementById('menuBtn');
+    var menuOverlay = document.getElementById('menuOverlay');
+
+    menuBtn.addEventListener('click', function() {
+        menuOverlay.classList.toggle('active');
+        menuBtn.classList.toggle('is-active');
+    });
+    </script>
+
+    <!-- FLOATING SOCIAL ICONS -->
+    <div class="floating-social" id="floatingSocial">
+        <a href="https://www.facebook.com/RG.GestiondeMarcas" aria-label="Facebook" class="floating-social__link" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/rg_gestionmarcas" aria-label="Instagram" class="floating-social__link" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@rg_gestiondemarcas" aria-label="TikTok" class="floating-social__link" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <button class="floating-social__toggle" aria-label="Ver redes sociales">
+            <i class="fas fa-share-alt floating-social__icon-open"></i>
+            <i class="fas fa-times floating-social__icon-close"></i>
+        </button>
+    </div>
+    <script>
+        (function () {
+            var social = document.getElementById('floatingSocial');
+            social.querySelector('.floating-social__toggle').addEventListener('click', function () {
+                social.classList.toggle('is-open');
+            });
+        })();
+    </script>
+
+</body>
+</html>
