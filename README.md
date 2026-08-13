@@ -6,7 +6,7 @@ Sitio web corporativo de **RG Gestión de Marcas**, agencia de marketing digital
 
 - HTML5 + CSS3 + JavaScript vanilla (sin frameworks ni bundlers)
 - Funciones serverless para el backend (Netlify Functions, con duplicados para Vercel en `api/`)
-- APIs externas: **Anthropic Claude** (simulador IA) y **Resend** (correo del formulario)
+- Uso de APIs
 
 ## Estructura
 
