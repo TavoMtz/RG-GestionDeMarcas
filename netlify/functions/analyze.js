@@ -1,7 +1,5 @@
-const ANTHROPIC_API_KEYS = [
-    'ANTHROPIC_API_KEY',
-    'CLAUDE_API_KEY',
-    'ANTHROPIC_KEY'
+const DEEPSEEK_API_KEYS = [
+    'DEEPSEEK_API_KEY'
 ];
 
 exports.handler = async function (event) {
@@ -9,11 +7,11 @@ exports.handler = async function (event) {
         return jsonResponse(405, { error: 'Method not allowed' });
     }
 
-    const apiKey = getFirstEnvValue(ANTHROPIC_API_KEYS);
+    const apiKey = getFirstEnvValue(DEEPSEEK_API_KEYS);
     if (!apiKey) {
         return jsonResponse(500, {
             error: 'API key no configurada en el servidor.',
-            expectedEnv: ANTHROPIC_API_KEYS
+            expectedEnv: DEEPSEEK_API_KEYS
         });
     }
 
@@ -25,12 +23,11 @@ exports.handler = async function (event) {
     }
 
     try {
-        const response = await fetch('https://api.anthropic.com/v1/messages', {
+        const response = await fetch('https://api.deepseek.com/chat/completions', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'x-api-key': apiKey,
-                'anthropic-version': '2023-06-01'
+                'Authorization': 'Bearer ' + apiKey
             },
             body: JSON.stringify(payload)
         });
@@ -38,14 +35,14 @@ exports.handler = async function (event) {
         const data = await response.json();
         return jsonResponse(response.status, data);
     } catch (error) {
-        return jsonResponse(500, { error: 'Error al conectar con la API de Anthropic.' });
+        return jsonResponse(500, { error: 'Error al conectar con la API de DeepSeek.' });
     }
 };
 
 function getFirstEnvValue(keys) {
     for (const key of keys) {
         if (process.env[key]) {
-            return process.env[key];
+            return process.env[key].trim();
         }
     }
     return '';

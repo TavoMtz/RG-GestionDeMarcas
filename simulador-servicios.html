@@ -195,8 +195,6 @@
     </footer>
 
     <script>
-    /* La API key se carga desde config.js (ver config.example.js) */
-
     /* Lista de servicios que ofrece RG Gestión de Marcas */
     const SERVICIOS_RG = [
         'Investigación de mercados',
@@ -278,7 +276,7 @@
         btnAnalizar.disabled = true;
 
         try {
-            const resultado = await llamarClaudeAPI(descripcion);
+            const resultado = await llamarDeepSeekAPI(descripcion);
             mostrarResultados(resultado);
             mostrarEstado('resultados');
         } catch (error) {
@@ -292,9 +290,9 @@
     }
 
     /* ============================================================
-       LLAMADA A LA API DE CLAUDE (ANTHROPIC)
+       LLAMADA A LA API DE DEEPSEEK
        ============================================================ */
-    async function llamarClaudeAPI(descripcion) {
+    async function llamarDeepSeekAPI(descripcion) {
         const listaServicios = SERVICIOS_RG.join(', ');
 
         const prompt = 'Eres consultor de marketing. Analiza este negocio: ' + descripcion +
@@ -309,8 +307,10 @@
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                model: 'claude-sonnet-4-20250514',
+                model: 'deepseek-v4-flash',
                 max_tokens: 1500,
+                thinking: { type: 'disabled' },
+                response_format: { type: 'json_object' },
                 messages: [
                     {
                         role: 'user',
@@ -323,7 +323,10 @@
         if (!response.ok) {
             const errorData = await response.json().catch(function() { return {}; });
             if (response.status === 401) {
-                throw new Error('API key inválida. Configura tu API key de Anthropic en el archivo.');
+                throw new Error('API key inválida. Configura tu API key de DeepSeek en el archivo.');
+            }
+            if (response.status === 402) {
+                throw new Error('Saldo insuficiente en la cuenta de DeepSeek. Recarga tu saldo e intenta de nuevo.');
             }
             if (response.status === 429) {
                 throw new Error('Demasiadas solicitudes. Espera un momento e intenta de nuevo.');
@@ -332,9 +335,9 @@
         }
 
         const data = await response.json();
-        const textoRespuesta = data.content[0].text;
+        const textoRespuesta = data.choices[0].message.content;
 
-        /* Parsear la respuesta JSON de Claude */
+        /* Parsear la respuesta JSON de DeepSeek */
         try {
             /* Buscar el JSON dentro de la respuesta por si viene con texto extra */
             var jsonMatch = textoRespuesta.match(/\{[\s\S]*\}/);
@@ -405,8 +408,8 @@
     /* ============================================================
        DESCARGAR RESUMEN EN PDF
        ============================================================
-       Genera un documento HTML temporal con estilos propios y lo
-       convierte a PDF usando html2pdf.js (CDN).
+       Genera el resumen con estilos propios y lo descarga
+       como PDF usando jsPDF (CDN).
        ============================================================ */
     function descargarResumen() {
         var analisis = analisisTexto.textContent;
@@ -561,7 +564,7 @@
 
         doc.setFont('helvetica', 'bold');
         doc.setFontSize(9);
-        doc.text('Email: contacto@rgmarketing.com   |   WhatsApp: +52 222 446 7947', pageW / 2, y + 23, { align: 'center' });
+        doc.text('Email: contacto@rg-gestiondemarcas.com   |   WhatsApp: +52 222 446 7947', pageW / 2, y + 23, { align: 'center' });
         y += 38;
 
         /* ── Footer ── */

@@ -8,7 +8,12 @@ exports.handler = async function(event) {
         return { statusCode: 500, body: JSON.stringify({ error: 'Servicio de email no configurado.' }) };
     }
 
-    const { nombre, email, telefono, servicio, mensaje } = JSON.parse(event.body || '{}');
+    let nombre, email, telefono, servicio, mensaje;
+    try {
+        ({ nombre, email, telefono, servicio, mensaje } = JSON.parse(event.body || '{}'));
+    } catch (error) {
+        return { statusCode: 400, body: JSON.stringify({ error: 'JSON inválido en el body.' }) };
+    }
 
     if (!nombre || !email || !mensaje) {
         return { statusCode: 400, body: JSON.stringify({ error: 'Faltan campos requeridos: nombre, email y mensaje.' }) };
@@ -28,7 +33,7 @@ exports.handler = async function(event) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nueva consulta de ${nombre}</title>
+  <title>Nueva consulta de ${escapeHtml(nombre)}</title>
 </head>
 <body style="margin:0;padding:0;background-color:#0a0a0a;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;">
   <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#0a0a0a;padding:40px 20px;">

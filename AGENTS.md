@@ -14,7 +14,7 @@ Static Spanish-language site for RG Gestión de Marcas (marketing agency). No fr
 - There are **two duplicate implementations** of each function that must be kept in sync when edited:
   - `netlify/functions/*.js` — CommonJS (`exports.handler`), used by Netlify.
   - `api/*.js` — ESM (`export default`), Vercel-only, not wired to the frontend under the current Netlify setup.
-- Env vars (set in the hosting platform, never commit them): `RESEND_API_KEY`; Anthropic key as `ANTHROPIC_API_KEY`, `CLAUDE_API_KEY`, or `ANTHROPIC_KEY` (analyze checks all three).
+- Env vars (set in the hosting platform, never commit them): `RESEND_API_KEY`; `DEEPSEEK_API_KEY` (used by analyze).
 - The contact form / AI simulator only work when functions run server-side with those env vars; local static preview can't exercise them.
 
 ## Conventions
