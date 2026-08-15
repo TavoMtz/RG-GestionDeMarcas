@@ -40,7 +40,7 @@ function highlightNext() {
 setTimeout(() => {
     setInterval(highlightNext, 2500);
     highlightNext();
-}, 4000);
+}, 4500);
 
 const svgElement = document.getElementById('main-svg');
 svgElement.addEventListener('mouseenter', () => {

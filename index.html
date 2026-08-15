@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <!-- METADATOS -->
     <meta charset="UTF-8">
@@ -47,6 +48,7 @@
     <!-- GENERAL -->
     <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
 </head>
+
 <body>
     <!-- PARTICLES -->
     <div id="particles-js"></div>
@@ -93,44 +95,57 @@
                     <!-- 1. Investigación de mercados — top, touching path 1 horizontal line -->
                     <g class="sphere-group" onclick="handleClick('Investigación de mercados')">
                         <rect x="740" y="32" width="350" height="48" rx="24" class="label-bg" />
+                        <rect x="730" y="6" width="370" height="116" rx="58" class="label-bg label-bg-mobile" />
                         <circle cx="690" cy="45" r="14" class="interactive-sphere" />
                         <text x="750" y="65" class="sphere-label">Investigación de mercados</text>
+                        <text x="915" y="54" class="sphere-label sphere-label-mobile" text-anchor="middle"><tspan x="915" y="54">Investigación de</tspan><tspan x="915" y="104">mercados</tspan></text>
                     </g>
 
                     <!-- 2. Naming, diseño y producción — right-upper, touching path 2 -->
                     <g class="sphere-group" onclick="handleClick('Naming, diseño y producción')">
                         <rect x="915" y="230" width="390" height="48" rx="24" class="label-bg" />
+                        <rect x="915" y="202" width="390" height="116" rx="58" class="label-bg label-bg-mobile" />
                         <circle cx="895" cy="295" r="14" class="interactive-sphere" />
                         <text x="930" y="260" class="sphere-label">Naming, diseño y producción</text>
+                        <text x="1110" y="250" class="sphere-label sphere-label-mobile" text-anchor="middle"><tspan x="1110" y="250">Naming, diseño</tspan><tspan x="1110" y="300">y producción</tspan></text>
                     </g>
 
                     <!-- 3. Diseño Web — right-middle, touching path 3 right edge -->
                     <g class="sphere-group" onclick="handleClick('Diseño Web')">
                         <rect x="1130" y="688" width="175" height="48" rx="24" class="label-bg right-aligned" />
+                        <rect x="1130" y="660" width="175" height="116" rx="58"
+                            class="label-bg right-aligned label-bg-mobile" />
                         <circle cx="1100" cy="658" r="14" class="interactive-sphere" />
                         <text x="1293" y="720" class="sphere-label" text-anchor="end">Diseño Web</text>
+                        <text x="1218" y="708" class="sphere-label sphere-label-mobile" text-anchor="middle"><tspan x="1218" y="708">Diseño</tspan><tspan x="1218" y="758">Web</tspan></text>
                     </g>
 
                     <!-- 4. Gestión de redes sociales — left-middle, touching path 1 curve -->
                     <g class="sphere-group" onclick="handleClick('Gestión de redes sociales')">
                         <rect x="375" y="655" width="345" height="48" rx="24" class="label-bg" />
+                        <rect x="375" y="632" width="345" height="116" rx="58" class="label-bg label-bg-mobile" />
                         <circle cx="360" cy="650" r="14" class="interactive-sphere" />
                         <text x="395" y="690" class="sphere-label">Gestión de redes sociales</text>
+                        <text x="548" y="680" class="sphere-label sphere-label-mobile" text-anchor="middle"><tspan x="548" y="680">Gestión de</tspan><tspan x="548" y="730">redes sociales</tspan></text>
                     </g>
 
                     <!-- 5. Cursos y capacitación — bottom, touching path 3 lower area -->
                     <g class="sphere-group" onclick="handleClick('Cursos y capacitación')">
                         <rect x="1080" y="1100" width="300" height="48" rx="24" class="label-bg" />
+                        <rect x="1080" y="1076" width="300" height="116" rx="58" class="label-bg label-bg-mobile" />
                         <circle cx="1060" cy="1100" r="14" class="interactive-sphere" />
                         <text x="1095" y="1132" class="sphere-label">Cursos y capacitación</text>
+                        <text x="1230" y="1124" class="sphere-label sphere-label-mobile" text-anchor="middle"><tspan x="1230" y="1124">Cursos y</tspan><tspan x="1230" y="1174">capacitación</tspan></text>
                     </g>
 
                     <!-- 6. Simulador IA — bottom-left, link to simulador-servicios.html -->
                     <a href="./simulador-servicios.html">
                         <g class="sphere-group">
                             <rect x="280" y="90" width="320" height="48" rx="24" class="label-bg" />
+                            <rect x="280" y="66" width="320" height="116" rx="58" class="label-bg label-bg-mobile" />
                             <circle cx="320" cy="35" r="14" class="interactive-sphere" />
                             <text x="300" y="120" class="sphere-label">Simulador de servicios</text>
+                            <text x="440" y="114" class="sphere-label sphere-label-mobile" text-anchor="middle"><tspan x="440" y="114">Simulador de</tspan><tspan x="440" y="164">servicios</tspan></text>
                         </g>
                     </a>
                 </g>
@@ -497,7 +512,8 @@
             <!-- Logos que hemos diseñado -->
             <div class="ndp-section ndp-logos-section">
                 <h3 class="ndp-section__title">Logos que hemos <span>diseñado</span></h3>
-                <p class="ndp-logos-section__desc">Cada logo es el resultado de un proceso creativo profundo: investigación, concepto y diseño al servicio de tu marca.</p>
+                <p class="ndp-logos-section__desc">Cada logo es el resultado de un proceso creativo profundo:
+                    investigación, concepto y diseño al servicio de tu marca.</p>
                 <button class="ndp-logos-toggle" id="ndpLogosToggle">
                     <i class="fas fa-eye"></i>
                     <span>Ver todos los logos</span>
@@ -509,7 +525,8 @@
                                 <div class="ndp-logo-card__deco"></div>
                                 <span class="ndp-logo-card__name">BeerPong</span>
                                 <div class="ndp-logo-card__deco"></div>
-                                <span class="ndp-logo-card__hint"><i class="fas fa-hand-pointer"></i> Descubrir logo</span>
+                                <span class="ndp-logo-card__hint"><i class="fas fa-hand-pointer"></i> Descubrir
+                                    logo</span>
                             </div>
                             <div class="ndp-logo-card__back">
                                 <img src="./img/logosClientes/logoBeerPong.webp" alt="BeerPong">
@@ -522,7 +539,8 @@
                                 <div class="ndp-logo-card__deco"></div>
                                 <span class="ndp-logo-card__name">Mandaditos</span>
                                 <div class="ndp-logo-card__deco"></div>
-                                <span class="ndp-logo-card__hint"><i class="fas fa-hand-pointer"></i> Descubrir logo</span>
+                                <span class="ndp-logo-card__hint"><i class="fas fa-hand-pointer"></i> Descubrir
+                                    logo</span>
                             </div>
                             <div class="ndp-logo-card__back">
                                 <img src="./img/logosClientes/logoMandaditos.webp" alt="Mandaditos">
@@ -535,7 +553,8 @@
                                 <div class="ndp-logo-card__deco"></div>
                                 <span class="ndp-logo-card__name">Odontie</span>
                                 <div class="ndp-logo-card__deco"></div>
-                                <span class="ndp-logo-card__hint"><i class="fas fa-hand-pointer"></i> Descubrir logo</span>
+                                <span class="ndp-logo-card__hint"><i class="fas fa-hand-pointer"></i> Descubrir
+                                    logo</span>
                             </div>
                             <div class="ndp-logo-card__back">
                                 <img src="./img/logosClientes/logoOdonti.webp" alt="Odontie">
@@ -548,7 +567,8 @@
                                 <div class="ndp-logo-card__deco"></div>
                                 <span class="ndp-logo-card__name">Golden Power</span>
                                 <div class="ndp-logo-card__deco"></div>
-                                <span class="ndp-logo-card__hint"><i class="fas fa-hand-pointer"></i> Descubrir logo</span>
+                                <span class="ndp-logo-card__hint"><i class="fas fa-hand-pointer"></i> Descubrir
+                                    logo</span>
                             </div>
                             <div class="ndp-logo-card__back">
                                 <img src="./img/logosClientes/logoGoldenPower.webp" alt="Golden Power">
@@ -561,7 +581,8 @@
                                 <div class="ndp-logo-card__deco"></div>
                                 <span class="ndp-logo-card__name">MIMACS</span>
                                 <div class="ndp-logo-card__deco"></div>
-                                <span class="ndp-logo-card__hint"><i class="fas fa-hand-pointer"></i> Descubrir logo</span>
+                                <span class="ndp-logo-card__hint"><i class="fas fa-hand-pointer"></i> Descubrir
+                                    logo</span>
                             </div>
                             <div class="ndp-logo-card__back">
                                 <img src="./img/logosClientes/logoMimacs.webp" alt="MIMACS">
@@ -574,7 +595,8 @@
                                 <div class="ndp-logo-card__deco"></div>
                                 <span class="ndp-logo-card__name">Grupo Bapa</span>
                                 <div class="ndp-logo-card__deco"></div>
-                                <span class="ndp-logo-card__hint"><i class="fas fa-hand-pointer"></i> Descubrir logo</span>
+                                <span class="ndp-logo-card__hint"><i class="fas fa-hand-pointer"></i> Descubrir
+                                    logo</span>
                             </div>
                             <div class="ndp-logo-card__back">
                                 <img src="./img/logosClientes/logoCliente5.webp" alt="Grupo Bapa">
@@ -587,7 +609,8 @@
                                 <div class="ndp-logo-card__deco"></div>
                                 <span class="ndp-logo-card__name">Mayra Nutrióloga</span>
                                 <div class="ndp-logo-card__deco"></div>
-                                <span class="ndp-logo-card__hint"><i class="fas fa-hand-pointer"></i> Descubrir logo</span>
+                                <span class="ndp-logo-card__hint"><i class="fas fa-hand-pointer"></i> Descubrir
+                                    logo</span>
                             </div>
                             <div class="ndp-logo-card__back">
                                 <img src="./img/logosClientes/logoMayraColor.webp" alt="Mayra Nutrióloga">
@@ -600,7 +623,8 @@
                                 <div class="ndp-logo-card__deco"></div>
                                 <span class="ndp-logo-card__name">Fundación Atenea</span>
                                 <div class="ndp-logo-card__deco"></div>
-                                <span class="ndp-logo-card__hint"><i class="fas fa-hand-pointer"></i> Descubrir logo</span>
+                                <span class="ndp-logo-card__hint"><i class="fas fa-hand-pointer"></i> Descubrir
+                                    logo</span>
                             </div>
                             <div class="ndp-logo-card__back">
                                 <img src="./img/logosClientes/logoFundacionAtenea.webp" alt="Fundación Atenea">
@@ -618,34 +642,43 @@
 
                     <div class="ndp-paso">
                         <div class="ndp-paso__img-wrap">
-                            <img src="./img/naimingDisenoProduccion/pasoCreacionLogo-1.webp" alt="Conceptualización del logo">
+                            <img src="./img/naimingDisenoProduccion/pasoCreacionLogo-1.webp"
+                                alt="Conceptualización del logo">
                         </div>
                         <div class="ndp-paso__content">
                             <span class="ndp-paso__num">01</span>
                             <h4 class="ndp-paso__title">Conceptualización</h4>
-                            <p class="ndp-paso__desc">En esta fase dibujamos y conceptualizamos las primeras ideas. Exploramos formas, trazos y simbolismos que mejor representen la esencia de tu marca antes de pasar a la etapa digital.</p>
+                            <p class="ndp-paso__desc">En esta fase dibujamos y conceptualizamos las primeras ideas.
+                                Exploramos formas, trazos y simbolismos que mejor representen la esencia de tu marca
+                                antes de pasar a la etapa digital.</p>
                         </div>
                     </div>
 
                     <div class="ndp-paso">
                         <div class="ndp-paso__img-wrap">
-                            <img src="./img/naimingDisenoProduccion/pasoCreacionLogo-2.webp" alt="Elementos y conceptos del cliente">
+                            <img src="./img/naimingDisenoProduccion/pasoCreacionLogo-2.webp"
+                                alt="Elementos y conceptos del cliente">
                         </div>
                         <div class="ndp-paso__content">
                             <span class="ndp-paso__num">02</span>
                             <h4 class="ndp-paso__title">Elementos & Conceptos</h4>
-                            <p class="ndp-paso__desc">Recopilamos todos los elementos visuales que el cliente desea incorporar: referencias estéticas, conceptos clave y los valores que la marca debe transmitir.</p>
+                            <p class="ndp-paso__desc">Recopilamos todos los elementos visuales que el cliente desea
+                                incorporar: referencias estéticas, conceptos clave y los valores que la marca debe
+                                transmitir.</p>
                         </div>
                     </div>
 
                     <div class="ndp-paso">
                         <div class="ndp-paso__img-wrap">
-                            <img src="./img/naimingDisenoProduccion/pasoCreacionLogo-3.webp" alt="Refinamiento de la identidad visual">
+                            <img src="./img/naimingDisenoProduccion/pasoCreacionLogo-3.webp"
+                                alt="Refinamiento de la identidad visual">
                         </div>
                         <div class="ndp-paso__content">
                             <span class="ndp-paso__num">03</span>
                             <h4 class="ndp-paso__title">Refinamiento</h4>
-                            <p class="ndp-paso__desc">Combinamos y afinamos cada concepto seleccionado, ajustando colores, tipografías y composición para construir una identidad visual coherente y con personalidad propia.</p>
+                            <p class="ndp-paso__desc">Combinamos y afinamos cada concepto seleccionado, ajustando
+                                colores, tipografías y composición para construir una identidad visual coherente y con
+                                personalidad propia.</p>
                         </div>
                     </div>
 
@@ -656,7 +689,9 @@
                         <div class="ndp-paso__content">
                             <span class="ndp-paso__num">04</span>
                             <h4 class="ndp-paso__title">Logo Final</h4>
-                            <p class="ndp-paso__desc">El resultado: un logo limpio, profesional y con carácter. Cada línea y color tiene un propósito, listo para representar tu marca en cualquier medio y formato.</p>
+                            <p class="ndp-paso__desc">El resultado: un logo limpio, profesional y con carácter. Cada
+                                línea y color tiene un propósito, listo para representar tu marca en cualquier medio y
+                                formato.</p>
                         </div>
                     </div>
 
@@ -675,7 +710,8 @@
                             <div class="ndp-rediseño-lado ndp-rediseño-lado--antes">
                                 <span class="ndp-rediseño-etiqueta">Antes</span>
                                 <div class="ndp-rediseño-img-wrap">
-                                    <img src="./img/LogosRediseniados/LogoRediseniado-2.webp" alt="Logo Grupo BAPA antes del rediseño">
+                                    <img src="./img/LogosRediseniados/LogoRediseniado-2.webp"
+                                        alt="Logo Grupo BAPA antes del rediseño">
                                 </div>
                             </div>
                             <div class="ndp-rediseño-flecha">
@@ -684,7 +720,8 @@
                             <div class="ndp-rediseño-lado ndp-rediseño-lado--despues">
                                 <span class="ndp-rediseño-etiqueta ndp-rediseño-etiqueta--despues">Después</span>
                                 <div class="ndp-rediseño-img-wrap">
-                                    <img src="./img/naimingDisenoProduccion/newLogoMimamcs-removebg.png" alt="Logo Grupo BAPA rediseñado">
+                                    <img src="./img/naimingDisenoProduccion/newLogoMimamcs-removebg.png"
+                                        alt="Logo Grupo BAPA rediseñado">
                                 </div>
                             </div>
                         </div>
@@ -697,7 +734,8 @@
                             <div class="ndp-rediseño-lado ndp-rediseño-lado--antes">
                                 <span class="ndp-rediseño-etiqueta">Antes</span>
                                 <div class="ndp-rediseño-img-wrap">
-                                    <img src="./img/LogosRediseniados/LogoRediseniado-1.webp" alt="Logo MIMACS antes del rediseño">
+                                    <img src="./img/LogosRediseniados/LogoRediseniado-1.webp"
+                                        alt="Logo MIMACS antes del rediseño">
                                 </div>
                             </div>
                             <div class="ndp-rediseño-flecha">
@@ -710,7 +748,7 @@
                                 </div>
                             </div>
                         </div>
-                       <!--  <p class="ndp-rediseño-empresa">MMAC</p> -->
+                        <!--  <p class="ndp-rediseño-empresa">MMAC</p> -->
                     </div>
 
                 </div>
@@ -719,19 +757,26 @@
             <!-- Bloque: Diseño de imagen corporativa -->
             <div class="ndp-section">
                 <h3 class="ndp-section__title">Diseño de imagen corporativa</h3>
-                <p class="ndp-dic-desc">Construimos la identidad visual de tu marca de manera integral. Desde la paleta de colores y tipografías hasta los elementos gráficos y su aplicación en cada medio, creamos un sistema coherente que comunica los valores de tu empresa y genera una impresión profesional y memorable en cada punto de contacto.</p>
+                <p class="ndp-dic-desc">Construimos la identidad visual de tu marca de manera integral. Desde la paleta
+                    de colores y tipografías hasta los elementos gráficos y su aplicación en cada medio, creamos un
+                    sistema coherente que comunica los valores de tu empresa y genera una impresión profesional y
+                    memorable en cada punto de contacto.</p>
                 <div class="ndp-dic-imgs">
                     <div class="ndp-dic-card ndp-dic-card--solid">
-                        <img src="./img/naimingDisenoProduccion/imagenCorporativa-2.webp" alt="Diseño de imagen corporativa">
+                        <img src="./img/naimingDisenoProduccion/imagenCorporativa-2.webp"
+                            alt="Diseño de imagen corporativa">
                     </div>
                     <div class="ndp-dic-card ndp-dic-card--transparent">
-                        <img src="./img/naimingDisenoProduccion/imagenCorporativa-1.webp" alt="Diseño de imagen corporativa">
+                        <img src="./img/naimingDisenoProduccion/imagenCorporativa-1.webp"
+                            alt="Diseño de imagen corporativa">
                     </div>
                     <div class="ndp-dic-card ndp-dic-card--transparent">
-                        <img src="./img/naimingDisenoProduccion/imagenCorporativa-3.webp" alt="Diseño de imagen corporativa">
+                        <img src="./img/naimingDisenoProduccion/imagenCorporativa-3.webp"
+                            alt="Diseño de imagen corporativa">
                     </div>
                     <div class="ndp-dic-card ndp-dic-card--transparent">
-                        <img src="./img/naimingDisenoProduccion/imagenCorporativa-4.webp" alt="Diseño de imagen corporativa">
+                        <img src="./img/naimingDisenoProduccion/imagenCorporativa-4.webp"
+                            alt="Diseño de imagen corporativa">
                     </div>
                 </div>
             </div>
@@ -987,7 +1032,8 @@
                     <div class="gallery-item"><img src="./img/cursosYCapacitacion/cursosYCapacitacion4.webp"
                             alt="Cursos 4"></div>
                     <ul class="inv-instruments" style="grid-column: 1 / -1">
-                        <li><i class="fas fa-trophy"></i> Primer congreso de habilidades gerenciales realizado en Querétaro para Enprotech</li>
+                        <li><i class="fas fa-trophy"></i> Primer congreso de habilidades gerenciales realizado en
+                            Querétaro para Enprotech</li>
                     </ul>
                 </div>
             </div>
@@ -1056,4 +1102,5 @@
     </script>
 
 </body>
+
 </html>
