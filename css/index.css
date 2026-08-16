@@ -1917,6 +1917,7 @@ h3 {
 }
 
 @media (max-width: 662px) {
+
     .label-bg:not(.label-bg-mobile),
     .sphere-label:not(.sphere-label-mobile) {
         display: none;
