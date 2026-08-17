@@ -1,34 +1,34 @@
-exports.handler = async function(event) {
-    if (event.httpMethod !== 'POST') {
-        return { statusCode: 405, body: JSON.stringify({ error: 'Method not allowed' }) };
-    }
+exports.handler = async function (event) {
+  if (event.httpMethod !== 'POST') {
+    return { statusCode: 405, body: JSON.stringify({ error: 'Method not allowed' }) };
+  }
 
-    const apiKey = process.env.RESEND_API_KEY;
-    if (!apiKey) {
-        return { statusCode: 500, body: JSON.stringify({ error: 'Servicio de email no configurado.' }) };
-    }
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    return { statusCode: 500, body: JSON.stringify({ error: 'Servicio de email no configurado.' }) };
+  }
 
-    let nombre, email, telefono, servicio, mensaje;
-    try {
-        ({ nombre, email, telefono, servicio, mensaje } = JSON.parse(event.body || '{}'));
-    } catch (error) {
-        return { statusCode: 400, body: JSON.stringify({ error: 'JSON inválido en el body.' }) };
-    }
+  let nombre, email, telefono, servicio, mensaje;
+  try {
+    ({ nombre, email, telefono, servicio, mensaje } = JSON.parse(event.body || '{}'));
+  } catch (error) {
+    return { statusCode: 400, body: JSON.stringify({ error: 'JSON inválido en el body.' }) };
+  }
 
-    if (!nombre || !email || !mensaje) {
-        return { statusCode: 400, body: JSON.stringify({ error: 'Faltan campos requeridos: nombre, email y mensaje.' }) };
-    }
+  if (!nombre || !email || !mensaje) {
+    return { statusCode: 400, body: JSON.stringify({ error: 'Faltan campos requeridos: nombre, email y mensaje.' }) };
+  }
 
-    const servicioLabel = {
-        investigacion: 'Investigación de Mercados',
-        naiming: 'Naming, Diseño y Producción',
-        web: 'Diseño Web',
-        redes: 'Gestión de Redes Sociales',
-        cursos: 'Cursos y Capacitación',
-        otro: 'Otro',
-    }[servicio] || servicio || 'No especificado';
+  const servicioLabel = {
+    investigacion: 'Investigación de Mercados',
+    naiming: 'Naming, Diseño y Producción',
+    web: 'Diseño Web',
+    redes: 'Gestión de Redes Sociales',
+    cursos: 'Cursos y Capacitación',
+    otro: 'Otro',
+  }[servicio] || servicio || 'No especificado';
 
-    const html = `<!DOCTYPE html>
+  const html = `<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -136,41 +136,41 @@ exports.handler = async function(event) {
 </body>
 </html>`;
 
-    try {
-        const response = await fetch('https://api.resend.com/emails', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${apiKey}`
-            },
-            body: JSON.stringify({
-                from: 'RG Gestión de Marcas <noreply@rg-gestiondemarcas.com>',
-                to: ['contacto@rg-gestiondemarcas.com'],
-                reply_to: email,
-                subject: `Nueva consulta de ${nombre} — ${servicioLabel}`,
-                html
-            })
-        });
+  try {
+    const response = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${apiKey}`
+      },//contacto@rg-gestiondemarcas.com
+      body: JSON.stringify({
+        from: 'RG Gestión de Marcas <noreply@rg-gestiondemarcas.com>',
+        to: ['gustavoenriquemartinezmoreno@gmail.com'],
+        reply_to: email,
+        subject: `Nueva consulta de ${nombre} — ${servicioLabel}`,
+        html
+      })
+    });
 
-        const data = await response.json();
+    const data = await response.json();
 
-        if (!response.ok) {
-            console.error('Resend error:', data);
-            return { statusCode: response.status, body: JSON.stringify({ error: data.message || 'Error al enviar el correo.' }) };
-        }
-
-        return { statusCode: 200, body: JSON.stringify({ success: true }) };
-    } catch (error) {
-        console.error('Contact handler error:', error);
-        return { statusCode: 500, body: JSON.stringify({ error: 'Error interno al enviar el mensaje.' }) };
+    if (!response.ok) {
+      console.error('Resend error:', data);
+      return { statusCode: response.status, body: JSON.stringify({ error: data.message || 'Error al enviar el correo.' }) };
     }
+
+    return { statusCode: 200, body: JSON.stringify({ success: true }) };
+  } catch (error) {
+    console.error('Contact handler error:', error);
+    return { statusCode: 500, body: JSON.stringify({ error: 'Error interno al enviar el mensaje.' }) };
+  }
 }
 
 function escapeHtml(str) {
-    return String(str)
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#39;');
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 }

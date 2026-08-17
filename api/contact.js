@@ -1,29 +1,29 @@
 export default async function handler(req, res) {
-    if (req.method !== 'POST') {
-        return res.status(405).json({ error: 'Method not allowed' });
-    }
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
 
-    const apiKey = process.env.RESEND_API_KEY;
-    if (!apiKey) {
-        return res.status(500).json({ error: 'Servicio de email no configurado.' });
-    }
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    return res.status(500).json({ error: 'Servicio de email no configurado.' });
+  }
 
-    const { nombre, email, telefono, servicio, mensaje } = req.body || {};
+  const { nombre, email, telefono, servicio, mensaje } = req.body || {};
 
-    if (!nombre || !email || !mensaje) {
-        return res.status(400).json({ error: 'Faltan campos requeridos: nombre, email y mensaje.' });
-    }
+  if (!nombre || !email || !mensaje) {
+    return res.status(400).json({ error: 'Faltan campos requeridos: nombre, email y mensaje.' });
+  }
 
-    const servicioLabel = {
-        investigacion: 'Investigación de Mercados',
-        naiming: 'Naming, Diseño y Producción',
-        web: 'Diseño Web',
-        redes: 'Gestión de Redes Sociales',
-        cursos: 'Cursos y Capacitación',
-        otro: 'Otro',
-    }[servicio] || servicio || 'No especificado';
+  const servicioLabel = {
+    investigacion: 'Investigación de Mercados',
+    naiming: 'Naming, Diseño y Producción',
+    web: 'Diseño Web',
+    redes: 'Gestión de Redes Sociales',
+    cursos: 'Cursos y Capacitación',
+    otro: 'Otro',
+  }[servicio] || servicio || 'No especificado';
 
-    const html = `<!DOCTYPE html>
+  const html = `<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -131,41 +131,41 @@ export default async function handler(req, res) {
 </body>
 </html>`;
 
-    try {
-        const response = await fetch('https://api.resend.com/emails', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${apiKey}`
-            },
-            body: JSON.stringify({
-                from: 'RG Gestión de Marcas <noreply@rg-gestiondemarcas.com>',
-                to: ['contacto@rg-gestiondemarcas.com'],
-                reply_to: email,
-                subject: `Nueva consulta de ${nombre} — ${servicioLabel}`,
-                html
-            })
-        });
+  try {
+    const response = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${apiKey}`
+      },//contacto@rg-gestiondemarcas.com
+      body: JSON.stringify({
+        from: 'RG Gestión de Marcas <noreply@rg-gestiondemarcas.com>',
+        to: ['gustavoenriquemartinezmoreno@gmail.com'],
+        reply_to: email,
+        subject: `Nueva consulta de ${nombre} — ${servicioLabel}`,
+        html
+      })
+    });
 
-        const data = await response.json();
+    const data = await response.json();
 
-        if (!response.ok) {
-            console.error('Resend error:', data);
-            return res.status(response.status).json({ error: data.message || 'Error al enviar el correo.' });
-        }
-
-        return res.status(200).json({ success: true });
-    } catch (error) {
-        console.error('Contact handler error:', error);
-        return res.status(500).json({ error: 'Error interno al enviar el mensaje.' });
+    if (!response.ok) {
+      console.error('Resend error:', data);
+      return res.status(response.status).json({ error: data.message || 'Error al enviar el correo.' });
     }
+
+    return res.status(200).json({ success: true });
+  } catch (error) {
+    console.error('Contact handler error:', error);
+    return res.status(500).json({ error: 'Error interno al enviar el mensaje.' });
+  }
 }
 
 function escapeHtml(str) {
-    return String(str)
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#39;');
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 }
