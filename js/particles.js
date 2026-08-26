@@ -1,7 +1,12 @@
-particlesJS({
+(function () {
+  if (typeof particlesJS !== 'function') return;
+
+  var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var config = {
     "particles": {
       "number": {
-        "value": 20,
+        "value": prefersReducedMotion ? 0 : 20,
         "density": {
           "enable": true,
           "value_area": 800
@@ -53,7 +58,7 @@ particlesJS({
         "width": 1
       },
       "move": {
-        "enable": true,
+        "enable": !prefersReducedMotion,
         "speed": 2,
         "direction": "top-left",
         "random": false,
@@ -71,7 +76,7 @@ particlesJS({
       "detect_on": "canvas",
       "events": {
         "onhover": {
-          "enable": true,
+          "enable": !prefersReducedMotion,
           "mode": "bubble"
         },
         "onclick": {
@@ -107,4 +112,7 @@ particlesJS({
       }
     },
     "retina_detect": true
-  })
+  };
+
+  particlesJS(config);
+})();

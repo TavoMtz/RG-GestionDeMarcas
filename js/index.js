@@ -133,7 +133,46 @@ function goBack() {
     // Volvemos siempre al home
     runTransition(currentActiveScreen, homeScreen, 'back');
     currentActiveScreen = homeScreen;
+    if (window.location.hash) {
+        history.pushState("", document.title, window.location.pathname + window.location.search);
+    }
 }
+
+// Soporte para abrir servicios directamente desde enlaces con hash (#sec-investigacion, etc.)
+function checkInitialHash() {
+    const hash = window.location.hash.replace('#', '');
+    if (hash && document.getElementById(hash)) {
+        const targetScreen = document.getElementById(hash);
+        if (targetScreen && targetScreen.classList.contains('screen')) {
+            homeScreen.style.display = 'none';
+            homeScreen.classList.remove('active');
+            targetScreen.style.display = 'flex';
+            targetScreen.classList.add('active');
+            targetScreen.scrollTop = 0;
+            currentActiveScreen = targetScreen;
+        }
+    }
+}
+
+window.addEventListener('DOMContentLoaded', checkInitialHash);
+window.addEventListener('hashchange', () => {
+    const hash = window.location.hash.replace('#', '');
+    if (hash && document.getElementById(hash)) {
+        const targetScreen = document.getElementById(hash);
+        if (targetScreen && targetScreen.classList.contains('screen') && targetScreen !== currentActiveScreen) {
+            if (currentActiveScreen === homeScreen) {
+                runTransition(homeScreen, targetScreen, 'forward');
+            } else {
+                currentActiveScreen.style.display = 'none';
+                currentActiveScreen.classList.remove('active');
+                targetScreen.style.display = 'flex';
+                targetScreen.classList.add('active');
+            }
+            targetScreen.scrollTop = 0;
+            currentActiveScreen = targetScreen;
+        }
+    }
+});
 
 function runTransition(currentEl, nextEl, direction) {
     isAnimating = true;

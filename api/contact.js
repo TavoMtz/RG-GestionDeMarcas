@@ -137,7 +137,7 @@ export default async function handler(req, res) {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${apiKey}`
-      },//contacto@rg-gestiondemarcas.com
+      },//contacto@rg-gestiondemarcas.com || 4 correos: direccion, ventas, contacto y capacitancion @rg-gentiondemarcas.com
       body: JSON.stringify({
         from: 'RG Gestión de Marcas <noreply@rg-gestiondemarcas.com>',
         to: ['gustavoenriquemartinezmoreno@gmail.com'],

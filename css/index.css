@@ -735,10 +735,13 @@ h3 {
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 12px;
     padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     transition: border-color 0.3s ease, transform 0.3s ease;
 }
 
-.servicio-home-card i {
+.servicio-home-card > i {
     font-size: 2rem;
     color: var(--colorEnfasis);
     margin-bottom: 1rem;
@@ -757,12 +760,13 @@ h3 {
     font-size: 0.95rem;
     color: var(--textGray);
     line-height: 1.6;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .btn-servicio-mas {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     padding: 12px 30px;
     background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
@@ -771,9 +775,11 @@ h3 {
     border-radius: 50px;
     font-weight: 700;
     font-size: 0.9rem;
+    line-height: 1;
+    text-decoration: none;
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin-top: 0.5rem;
+    margin-top: auto;
 }
 
 .btn-servicio-mas:hover {
@@ -782,8 +788,12 @@ h3 {
 }
 
 .btn-servicio-mas i {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     color: #121212;
+    margin-bottom: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     transition: transform 0.3s ease;
 }
 
@@ -1845,16 +1855,18 @@ h3 {
     padding-top: 20px;
     border-top: 1px solid #222;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    text-align: center;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 16px;
 }
 
 .footer-bottom p {
     color: #555;
     font-size: 0.8rem;
     margin: 0;
+    white-space: nowrap;
 }
 
 .footer-bottom a {
@@ -1866,6 +1878,10 @@ h3 {
 
 .footer-bottom a:hover {
     color: var(--colorEnfasis);
+}
+
+.footer-credit {
+    white-space: nowrap;
 }
 
 .footer-credit a {
@@ -1899,6 +1915,11 @@ h3 {
     .footer-bottom {
         flex-direction: column;
         text-align: center;
+        gap: 8px;
+    }
+
+    .footer-bottom p {
+        white-space: normal;
     }
 }
 

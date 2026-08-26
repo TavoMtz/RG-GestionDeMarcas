@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- METADATOS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | RG Gestión de Marcas</title>
+    <meta name="description"
+        content="Artículos, tendencias y reflexiones sobre marketing, branding, diseño web y estrategias digitales del equipo de RG Gestión de Marcas." />
+    <meta property="og:title" content="Blog | RG Gestión de Marcas" />
+    <meta property="og:description"
+        content="Artículos, tendencias y reflexiones sobre marketing, branding, diseño web y estrategias digitales." />
+
+    <!-- STYLES -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/blog.css">
+    <!-- FUENTES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- LIBRERÍAS DEL BLOG (CDN) -->
+    <!-- marked: render Markdown → HTML -->
+    <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js" defer></script>
+    <!-- DOMPurify: sanitización anti-XSS (obligatoria por AGENTS.md) -->
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js" defer></script>
+    <!-- Supabase JS (cliente) -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js" defer></script>
+
+    <!-- SCRIPTS compartidos -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js" defer></script>
+    <script src="./js/particles.js" defer></script>
+
+    <!-- Config + lógica del blog -->
+    <script src="./js/blog-config.js" defer></script>
+    <script src="./js/blog.js" defer></script>
+
+    <!-- GENERAL -->
+    <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
+</head>
+
+<body>
+    <!-- PARTICLES -->
+    <div id="particles-js"></div>
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <nav class="nav">
+        <div class="containerLogo">
+            <a href="./index.html">
+                <img class="nav_logo containerLogo_img" src="./img/logoRG.png" alt="Logo RG Agencia de Marketing">
+            </a>
+        </div>
+        <button class="nav_buttonMenu" id="menuBtn">
+            <svg class="nav_buttonMenuSVG" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+
+        </button>
+        <div class="circular_reveal_menu" id="menuOverlay">
+            <ul class="menu_items">
+                <li><a href="./index.html">Inicio</a></li>
+                <li><a href="./nosotros.html">Sobre Nosotros</a></li>
+                <li><a href="./simulador-servicios.html">Simulador IA</a></li>
+                <li><a href="./contacto.html">Contacto</a></li>
+                <li><a href="./admin.html">Admin</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- MAIN -->
+    <main class="main">
+        <!-- VISTA: LISTA DE POSTS -->
+        <section id="blogListView" hidden>
+            <div id="blogNotFoundBanner" class="blog-not-found" role="alert" hidden>
+                <p class="blog-not-found__title">Publicación no encontrada.</p>
+                <p class="blog-not-found__hint">La URL que abriste no coincide con ningún artículo publicado. Te dejamos el resto para que sigas explorando.</p>
+            </div>
+            <header class="blog-hero">
+                <span class="blog-hero__eyebrow">Blog</span>
+                <h1 class="blog-hero__title">Ideas, marcas y estrategia</h1>
+                <p class="blog-hero__desc">
+                    Reflexiones y casos prácticos del equipo de RG sobre marketing, branding,
+                    presencia digital y gestión de marcas.
+                </p>
+            </header>
+
+            <div class="blog-filter-bar">
+                <label for="blogTagFilter">Categorias</label>
+                <select id="blogTagFilter">
+                    <option value="">Todas</option>
+                </select>
+            </div>
+
+            <div id="blogFeatured" class="blog-featured"></div>
+            <div id="blogGrid" class="blog-grid"></div>
+            <div id="blogState" class="blog-state" aria-live="polite"></div>
+        </section>
+
+        <!-- VISTA: POST INDIVIDUAL -->
+        <article id="blogPostView" class="blog-post" hidden>
+            <button class="blog-post__back" type="button" id="blogPostBack">
+                <i class="fas fa-arrow-left"></i> Volver al blog
+            </button>
+        </article>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-col footer-brand">
+                <img src="./img/logoRG.png" alt="Logo RG" class="footer-brand-logo">
+                <p>Somos una agencia especializada en gestión de marcas. Transformamos negocios a través de estrategias
+                    de marketing integrales, diseño y comunicación efectiva.</p>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/RG.GestiondeMarcas" aria-label="Facebook" target="_blank"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/rg_gestionmarcas" aria-label="Instagram" target="_blank"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@rg_gestiondemarcas" aria-label="TikTok" target="_blank"><i
+                            class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Navegación</h3>
+                <ul>
+                    <li><a href="./index.html">Inicio</a></li>
+                    <li><a href="./nosotros.html">Sobre Nosotros</a></li>
+                    <li><a href="./simulador-servicios.html">Simulador IA</a></li>
+                    <li><a href="./blog.html">Blog</a></li>
+                    <li><a href="./contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Servicios</h3>
+                <ul>
+                    <li><a href="./index.html#sec-investigacion">Investigación de Mercados</a></li>
+                    <li><a href="./index.html#sec-branding">Naming, Diseño y Producción</a></li>
+                    <li><a href="./index.html#sec-web">Diseño Web</a></li>
+                    <li><a href="./index.html#sec-redes">Gestión de Redes Sociales</a></li>
+                    <li><a href="./index.html#sec-cursos">Cursos y Capacitación</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contacto</h3>
+                <div class="footer-contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>contacto@rg-gestiondemarcas.com</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>ventas@rg-gestiondemarcas.com</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+52 222 446 7947</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 RG Gestión de Marcas. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Script del menú -->
+    <script>
+        (function () {
+            const menuBtn = document.getElementById('menuBtn');
+            const menuOverlay = document.getElementById('menuOverlay');
+            menuBtn.addEventListener('click', () => {
+                menuOverlay.classList.toggle('active');
+                menuBtn.classList.toggle('is-active');
+            });
+        })();
+    </script>
+
+    <!-- FLOATING SOCIAL ICONS -->
+    <div class="floating-social" id="floatingSocial">
+        <a href="https://www.facebook.com/RG.GestiondeMarcas" aria-label="Facebook" class="floating-social__link"
+            target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/rg_gestionmarcas" aria-label="Instagram" class="floating-social__link"
+            target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@rg_gestiondemarcas" aria-label="TikTok" class="floating-social__link"
+            target="_blank"><i class="fab fa-tiktok"></i></a>
+        <button class="floating-social__toggle" aria-label="Ver redes sociales" aria-expanded="false" aria-controls="floatingSocialLinks">
+            <i class="fas fa-share-alt floating-social__icon-open"></i>
+            <i class="fas fa-times floating-social__icon-close"></i>
+        </button>
+    </div>
+    <script>
+        (function () {
+            var social = document.getElementById('floatingSocial');
+            var toggle = social.querySelector('.floating-social__toggle');
+            toggle.addEventListener('click', function () {
+                var isOpen = social.classList.toggle('is-open');
+                toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            });
+        })();
+    </script>
+
+</body>
+
+</html>

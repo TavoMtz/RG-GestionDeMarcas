@@ -1,24 +1,43 @@
 # RG Gestión de Marcas — Sitio Web
 
-Sitio web corporativo de **RG Gestión de Marcas**, agencia de marketing digital con sede en Puebla, México. Muestra los servicios de la agencia, su portafolio, un simulador de servicios con IA y un formulario de contacto.
+Sitio web corporativo de **RG Gestión de Marcas**, agencia de marketing digital con sede en Puebla, México. Muestra los servicios de la agencia, su portafolio, un simulador de servicios con IA, un formulario de contacto y un blog con panel de administración.
 
 ## Tecnologías
 
 - HTML5 + CSS3 + JavaScript vanilla (sin frameworks ni bundlers)
 - Funciones serverless para el backend (Netlify Functions, con duplicados para Vercel en `api/`)
 - APIs externas: **DeepSeek** (simulador IA) y **Resend** (correo del formulario)
+- **Supabase** (Postgres + Auth + Storage) como base de datos del blog
+- Librerías vía CDN: `marked` (Markdown), `DOMPurify` (anti-XSS), `@supabase/supabase-js`
 
 ## Estructura
 
 ```
-├── index.html / nosotros.html / simulador-servicios.html / contacto.html
-├── css/          Estilos por página
-├── js/           Lógica del frontend (index.js, particles.js)
-├── img/          Imágenes y portafolio por servicio
-├── netlify/functions/   Funciones serverless activas (CommonJS)
-├── api/                  Duplicados Vercel (ESM, no usados por el frontend actualmente)
-└── netlify.toml          Configuración de Netlify
+├── index.html                  # Página principal
+├── nosotros.html               # Sobre Nosotros
+├── simulador-servicios.html    # Simulador IA
+├── contacto.html               # Formulario de contacto
+├── blog.html                   # Blog público (lista + posts)
+├── admin.html                  # Panel de administración del blog (login + editor)
+├── css/                        # Estilos por página
+├── js/                         # Lógica del frontend (index.js, particles.js, blog.js, admin.js, blog-config.js)
+├── img/                        # Imágenes y portafolio por servicio
+├── db/                         # Esquema SQL del blog (Supabase) + README
+├── netlify/functions/          # Funciones serverless activas (CommonJS)
+├── api/                        # Duplicados Vercel (ESM)
+└── netlify.toml                # Configuración de Netlify
 ```
+
+## Blog
+
+El blog es público para lectura y de CRUD restringido al equipo de staff.
+
+- **Lectura**: cualquier visitante ve los posts publicados.
+- **Escritura (CRUD)**: sólo usuarios autenticados. Las cuentas se crean manualmente desde Supabase. El registro público está deshabilitado.
+- **Tags**: tabla independiente con relación many-to-many con los posts (`post_tags`).
+- **Portadas**: se suben al bucket `blog-covers` de Supabase Storage.
+
+Ver instrucciones completas en `db/README.md` y el esquema en `db/blog_schema.sql`.
 
 ## Puesta en marcha
 
@@ -28,6 +47,10 @@ No requiere instalación ni build. Solo abre `index.html` en el navegador o sirv
 # Sin dependencias; por ejemplo:
 npx serve .
 ```
+
+## Configuración
+
+`js/blog-config.js` contiene `supabaseUrl` y `supabaseAnonKey`. Reemplazar por los valores reales del proyecto Supabase antes de desplegar.
 
 ## Contacto
 

@@ -1,0 +1,193 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-22T16:32:00Z",
+  "title": "Design System: RG Gestión de Marcas",
+  "extensions": {
+    "colorMeta": {
+      "surface-tinta": {
+        "role": "neutral",
+        "displayName": "Tinta de Carbón",
+        "canonical": "#121212",
+        "tonalRamp": ["#0a0a0a", "#121212", "#1a1a1a", "#222222", "#2a2a2a", "#333333", "#3d3d3d", "#474747"]
+      },
+      "surface-pizarra": {
+        "role": "neutral",
+        "displayName": "Pizarra Tinta",
+        "canonical": "#1e1e1e",
+        "tonalRamp": ["#141414", "#1a1a1a", "#1e1e1e", "#262626", "#2e2e2e", "#363636", "#404040", "#4a4a4a"]
+      },
+      "surface-card": {
+        "role": "neutral",
+        "displayName": "Card Layer",
+        "canonical": "#1e1e1e",
+        "tonalRamp": ["#141414", "#1a1a1a", "#1e1e1e", "#262626", "#2e2e2e", "#363636", "#404040", "#4a4a4a"]
+      },
+      "text-papel": {
+        "role": "neutral",
+        "displayName": "Papel Frío",
+        "canonical": "#e2e8f0",
+        "tonalRamp": ["#1a1f24", "#3a4148", "#5a6168", "#7a8188", "#9aa1a8", "#bac1c8", "#d8dde0", "#e2e8f0"]
+      },
+      "text-blanco": {
+        "role": "neutral",
+        "displayName": "Blanco Puro",
+        "canonical": "#ffffff",
+        "tonalRamp": ["#d9d9d9", "#e6e6e6", "#f2f2f2", "#ffffff", "#ffffff", "#ffffff", "#ffffff", "#ffffff"]
+      },
+      "text-niebla": {
+        "role": "neutral",
+        "displayName": "Niebla",
+        "canonical": "#b3b3b3",
+        "tonalRamp": ["#3d3d3d", "#5e5e5e", "#7e7e7e", "#9e9e9e", "#b3b3b3", "#c4c4c4", "#d6d6d6", "#e8e8e8"]
+      },
+      "text-atenuado": {
+        "role": "neutral",
+        "displayName": "Atenuado (blog)",
+        "canonical": "#c9c9c9",
+        "tonalRamp": ["#3a3a3a", "#5a5a5a", "#7a7a7a", "#9a9a9a", "#b3b3b3", "#c9c9c9", "#dcdcdc", "#efefef"]
+      },
+      "accent-marca": {
+        "role": "primary",
+        "displayName": "Ámbar de Marca",
+        "canonical": "#f4a71c",
+        "tonalRamp": ["#3a2300", "#6e4500", "#a26800", "#d68b00", "#f4a71c", "#fbc24f", "#fdd480", "#fee5b3"]
+      },
+      "emphasis-sol": {
+        "role": "secondary",
+        "displayName": "Oro Sol",
+        "canonical": "#f6cf3d",
+        "tonalRamp": ["#3a3300", "#6e6200", "#a29100", "#d6c000", "#f6cf3d", "#fae06b", "#fcec99", "#fdf6c6"]
+      },
+      "secondary-ambar": {
+        "role": "tertiary",
+        "displayName": "Ámbar de Gradiente",
+        "canonical": "#ffc107",
+        "tonalRamp": ["#3a2c00", "#705500", "#a67e00", "#dba700", "#ffc107", "#ffd340", "#ffe380", "#fff0bf"]
+      },
+      "border-sutil": {
+        "role": "neutral",
+        "displayName": "Borde Sutil",
+        "canonical": "rgba(255, 255, 255, 0.08)",
+        "tonalRamp": ["rgba(255,255,255,0.02)", "rgba(255,255,255,0.04)", "rgba(255,255,255,0.06)", "rgba(255,255,255,0.08)", "rgba(255,255,255,0.12)", "rgba(255,255,255,0.16)", "rgba(255,255,255,0.22)", "rgba(255,255,255,0.30)"]
+      },
+      "border-medio": {
+        "role": "neutral",
+        "displayName": "Borde Medio",
+        "canonical": "rgba(255, 255, 255, 0.12)",
+        "tonalRamp": ["rgba(255,255,255,0.04)", "rgba(255,255,255,0.08)", "rgba(255,255,255,0.10)", "rgba(255,255,255,0.12)", "rgba(255,255,255,0.16)", "rgba(255,255,255,0.22)", "rgba(255,255,255,0.30)", "rgba(255,255,255,0.40)"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Título del hero del blog (uno por superficie)." },
+      "headline": { "displayName": "Headline", "purpose": "Título del post individual." },
+      "title": { "displayName": "Title", "purpose": "Título de card en el listado." },
+      "body": { "displayName": "Body", "purpose": "Párrafos y descripciones generales." },
+      "body-prose": { "displayName": "Body Prose", "purpose": "Cuerpo del artículo (lectura sostenida)." },
+      "label": { "displayName": "Label", "purpose": "Meta en cards, CTA, badges." },
+      "eyebrow": { "displayName": "Eyebrow", "purpose": "Rótulo de sección sobre el heading." }
+    },
+    "shadows": [
+      {
+        "name": "ambient-low",
+        "value": "0 18px 40px rgba(0,0,0,0.35)",
+        "purpose": "Hover de card regular."
+      },
+      {
+        "name": "ambient-large",
+        "value": "0 22px 50px rgba(0,0,0,0.4)",
+        "purpose": "Hover de featured card."
+      },
+      {
+        "name": "select-focus-halo",
+        "value": "0 0 0 3px rgba(200, 155, 60, 0.15)",
+        "purpose": "Foco del select de filtro (halo ámbar)."
+      }
+    ],
+    "motion": [
+      {
+        "name": "card-hover",
+        "value": "transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease",
+        "purpose": "Transición de card en hover (translateY -4px + sombra + borde)."
+      }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "640px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Blog Card",
+      "kind": "card",
+      "refersTo": "blog-card",
+      "description": "Card de 14px radius para el listado de posts. Flat en reposo; hover eleva 4px con sombra suave y borde ámbar tenue.",
+      "html": "<article class=\"ds-blog-card\"><div class=\"ds-blog-card__cover\" style=\"background-image:url('https://example.com/cover.jpg')\"></div><div class=\"ds-blog-card__body\"><span class=\"ds-blog-card__meta\">15 ene 2026</span><a class=\"ds-blog-card__title-link\" href=\"./blog.html?slug=ejemplo\"><h3 class=\"ds-blog-card__title\">Título del artículo</h3></a><p class=\"ds-blog-card__excerpt\">Resumen del artículo en una o dos líneas.</p><div class=\"ds-blog-card__tags\"><span class=\"ds-blog-card__tag\">#Diseño Web</span></div><div class=\"ds-blog-card__footer\"><span>RG Gestión de Marcas</span><a class=\"ds-blog-card__readmore\" href=\"./blog.html?slug=ejemplo\">Leer →</a></div></div></article>",
+      "css": ".ds-blog-card { background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 14px; overflow: hidden; cursor: pointer; transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; display: flex; flex-direction: column; color: #e2e8f0; } .ds-blog-card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35); border-color: rgba(200, 155, 60, 0.4); } .ds-blog-card__cover { aspect-ratio: 16/9; width: 100%; background: linear-gradient(135deg, rgba(200, 155, 60, 0.15), rgba(255, 255, 255, 0.05)) center/cover no-repeat; } .ds-blog-card__body { padding: 1.25rem 1.25rem 1.5rem; display: flex; flex-direction: column; gap: 0.6rem; flex: 1; } .ds-blog-card__meta { font-size: 0.75rem; color: #c9c9c9; } .ds-blog-card__title-link { text-decoration: none; color: inherit; } .ds-blog-card__title { font-family: Montserrat, sans-serif; font-size: 1.15rem; font-weight: 700; line-height: 1.3; margin: 0; color: #fff; } .ds-blog-card__excerpt { font-size: 0.9rem; color: #c9c9c9; line-height: 1.5; flex: 1; } .ds-blog-card__tags { display: flex; flex-wrap: wrap; gap: 0.4rem; } .ds-blog-card__tag { background: rgba(255, 255, 255, 0.08); color: #c9c9c9; padding: 0.25rem 0.7rem; border-radius: 999px; font-size: 0.8rem; } .ds-blog-card__footer { display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: #c9c9c9; margin-top: 0.25rem; } .ds-blog-card__readmore { color: #f4a71c; font-weight: 600; } .ds-blog-card:focus-within { outline: 2px solid #f4a71c; outline-offset: 4px; }"
+    },
+    {
+      "name": "Featured Post Card",
+      "kind": "card",
+      "refersTo": "blog-featured-card",
+      "description": "Card de 16px radius en grid 1.1fr/1fr para el post destacado (más reciente bajo el filtro actual).",
+      "html": "<article class=\"ds-blog-featured\"><a class=\"ds-blog-featured__cover-link\" href=\"./blog.html?slug=ejemplo\"><div class=\"ds-blog-featured__cover\" style=\"background-image:url('https://example.com/cover.jpg')\"></div></a><div class=\"ds-blog-featured__body\"><span class=\"ds-blog-featured__meta\">Destacado · 15 ene 2026</span><a class=\"ds-blog-featured__title-link\" href=\"./blog.html?slug=ejemplo\"><h2 class=\"ds-blog-featured__title\">Título del artículo destacado</h2></a><p class=\"ds-blog-featured__snippet\">Resumen del artículo destacado hasta 250 caracteres.</p><div class=\"ds-blog-featured__tags\"><span class=\"ds-blog-featured__tag\">#Diseño Web</span></div><a class=\"ds-blog-featured__cta\" href=\"./blog.html?slug=ejemplo\">Leer artículo →</a></div></article>",
+      "css": ".ds-blog-featured { display: grid; grid-template-columns: 1.1fr 1fr; gap: 0; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; overflow: hidden; transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; color: #e2e8f0; } .ds-blog-featured:hover { transform: translateY(-4px); box-shadow: 0 22px 50px rgba(0, 0, 0, 0.4); border-color: rgba(200, 155, 60, 0.45); } .ds-blog-featured__cover-link { display: block; } .ds-blog-featured__cover { min-height: 320px; background: linear-gradient(135deg, rgba(200, 155, 60, 0.18), rgba(255, 255, 255, 0.05)) center/cover no-repeat; } .ds-blog-featured__body { padding: 2rem 2.25rem; display: flex; flex-direction: column; gap: 1rem; justify-content: center; } .ds-blog-featured__meta { font-size: 0.8rem; color: #f4a71c; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; } .ds-blog-featured__title-link { text-decoration: none; color: inherit; } .ds-blog-featured__title { font-family: Montserrat, sans-serif; font-size: clamp(1.5rem, 3.2vw, 2.2rem); font-weight: 700; line-height: 1.2; margin: 0; color: #fff; } .ds-blog-featured__snippet { font-size: 1rem; line-height: 1.6; color: #c9c9c9; margin: 0; } .ds-blog-featured__tags { display: flex; flex-wrap: wrap; gap: 0.4rem; } .ds-blog-featured__tag { background: rgba(255, 255, 255, 0.08); color: #c9c9c9; padding: 0.3rem 0.75rem; border-radius: 999px; font-size: 0.85rem; } .ds-blog-featured__cta { display: inline-flex; align-items: center; gap: 0.4rem; color: #f4a71c; font-weight: 700; font-size: 1rem; text-decoration: none; margin-top: 0.5rem; } .ds-blog-featured__cta:hover { text-decoration: underline; } @media (max-width: 640px) { .ds-blog-featured { grid-template-columns: 1fr; } .ds-blog-featured__cover { min-height: 200px; } .ds-blog-featured__body { padding: 1.5rem 1.5rem 1.75rem; } }"
+    },
+    {
+      "name": "Tag Chip",
+      "kind": "chip",
+      "refersTo": "chip-tag",
+      "description": "Pill estática para tags en cards y post. Fondo borde-sutil sobre texto atenuado.",
+      "html": "<span class=\"ds-chip-tag\">#Diseño Web</span>",
+      "css": ".ds-chip-tag { background: rgba(255, 255, 255, 0.08); color: #c9c9c9; padding: 0.25rem 0.7rem; border-radius: 999px; font-size: 0.8rem; font-family: Poppins, sans-serif; font-weight: 400; }"
+    },
+    {
+      "name": "Filter Select",
+      "kind": "input",
+      "refersTo": "select-filter",
+      "description": "Select nativo con chevron SVG inline en ámbar. Foco con halo ámbar.",
+      "html": "<label class=\"ds-filter-label\" for=\"filter\">Categorías</label><select class=\"ds-filter-select\" id=\"filter\"><option value=\"\">Todas</option><option value=\"diseno-web\">#Diseño Web</option></select>",
+      "css": ".ds-filter-select { background: rgba(255, 255, 255, 0.05); color: #fff; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 8px; padding: 0.5rem 2.2rem 0.5rem 0.85rem; font-family: Poppins, sans-serif; font-size: 0.95rem; min-width: 200px; cursor: pointer; appearance: none; -webkit-appearance: none; background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23c89b3c' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E\"); background-repeat: no-repeat; background-position: right 0.7rem center; } .ds-filter-select:focus { outline: none; border-color: #c89b3c; box-shadow: 0 0 0 3px rgba(200, 155, 60, 0.15); } .ds-filter-select option { background-color: #16161a; color: #fff; } .ds-filter-label { color: #c9c9c9; font-size: 0.9rem; margin-right: 0.6rem; }"
+    },
+    {
+      "name": "Blog Post Body",
+      "kind": "custom",
+      "refersTo": "blog-post-body",
+      "description": "Columna de lectura de 760px con jerarquía Markdown. Headings Montserrat, párrafos Poppins 1.05rem/lh 1.75. Blockquote con borde izquierdo 3px en ámbar.",
+      "html": "<article class=\"ds-blog-post\"><button class=\"ds-blog-post__back\" type=\"button\"><i class=\"fas fa-arrow-left\"></i> Volver al blog</button><img class=\"ds-blog-post__cover\" src=\"https://example.com/cover.jpg\" alt=\"Título del artículo\"><div class=\"ds-blog-post__meta\"><span>15 ene 2026</span></div><h1 class=\"ds-blog-post__title\">Título del artículo</h1><p class=\"ds-blog-post__excerpt\">Resumen en una o dos líneas.</p><div class=\"ds-blog-post__content\"><h2>Encabezado</h2><p>Párrafo del artículo...</p><blockquote>Cita importante con borde izquierdo en ámbar.</blockquote></div><div class=\"ds-blog-post__tags\"><span class=\"ds-chip-tag\">#Diseño Web</span></div></article>",
+      "css": ".ds-blog-post { max-width: 760px; margin: 0 auto 5rem; padding: 7rem 1.5rem 2rem; color: #e2e8f0; } .ds-blog-post__back { display: inline-flex; align-items: center; gap: 0.4rem; color: #f4a71c; font-weight: 600; margin-bottom: 1.5rem; background: none; border: none; cursor: pointer; font-size: 0.95rem; padding: 0; font-family: inherit; } .ds-blog-post__back:hover { text-decoration: underline; } .ds-blog-post__cover { width: 100%; max-height: 380px; object-fit: cover; border-radius: 14px; margin-bottom: 2rem; } .ds-blog-post__meta { display: flex; flex-wrap: wrap; gap: 0.6rem; font-size: 0.85rem; color: #c9c9c9; margin-bottom: 0.5rem; } .ds-blog-post__title { font-family: Montserrat, sans-serif; font-size: clamp(1.8rem, 4.2vw, 2.6rem); line-height: 1.2; margin: 0.25rem 0 0.75rem; color: #fff; } .ds-blog-post__excerpt { font-size: 1.1rem; line-height: 1.5; color: #c9c9c9; font-style: italic; margin-bottom: 1.75rem; } .ds-blog-post__content { font-size: 1.05rem; line-height: 1.75; color: #f4f4f4; } .ds-blog-post__content h1, .ds-blog-post__content h2, .ds-blog-post__content h3 { font-family: Montserrat, sans-serif; margin-top: 2rem; margin-bottom: 0.75rem; color: #fff; } .ds-blog-post__content p { margin-bottom: 1.1rem; } .ds-blog-post__content ul, .ds-blog-post__content ol { margin: 0 0 1.1rem 1.4rem; } .ds-blog-post__content li { margin-bottom: 0.4rem; } .ds-blog-post__content a { color: #f4a71c; text-decoration: underline; } .ds-blog-post__content code { background: rgba(255, 255, 255, 0.08); padding: 0.15rem 0.35rem; border-radius: 4px; font-size: 0.9em; } .ds-blog-post__content pre { background: rgba(255, 255, 255, 0.06); padding: 1rem; border-radius: 8px; overflow-x: auto; margin: 1rem 0; } .ds-blog-post__content pre code { background: transparent; padding: 0; } .ds-blog-post__content img { max-width: 100%; border-radius: 8px; margin: 1rem 0; } .ds-blog-post__content blockquote { border-left: 3px solid #f4a71c; padding-left: 1rem; color: #c9c9c9; font-style: italic; margin: 1rem 0; } .ds-blog-post__tags { margin-top: 2.5rem; display: flex; flex-wrap: wrap; gap: 0.4rem; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "El Taller Editorial",
+    "overview": "RG Gestión de Marcas opera desde Puebla, México como un estudio de marketing donde el oficio pesa más que la pirotecnia. La página web — y por extensión el blog — debe leerse como el escritorio del taller: oscuro, contenido, con instrumentos a la vista. La paleta dominante es tinta de carbón sobre la que aparece un único acento cálido (accent-marca) para indicar dirección. La tipografía hace una sola promesa: Montserrat pone título a las cosas, Poppins las explica.\n\nEl sitio es dark-only por decisión de ambiente: la marca quiere leer como un estudio de noche, no como una sala de exposición. La voz editorial — cuando esté bien encauzada — debe sentirse local (Puebla, oficio, casos), no genérica. La fase actual del blog es **ingeniería sin autoría**: el sistema está cableado pero el contenido y la huella específica de la agencia todavía no aterrizan.",
+    "keyCharacteristics": [
+      "Dark-only, sin alternancia a tema claro. La marca no es \"configurable\"; es un ambiente.",
+      "Un acento cálido (accent-marca ámbar) hace todo el trabajo de énfasis. Raro es el punto.",
+      "Display Montserrat 700, body Poppins 400-600. Sin serif editorial, sin mono de adorno.",
+      "Cards 14-16px radius; tags en pill; superficies por capas tonales (sin sombras estructurales fuertes).",
+      "El blog se renderiza con Markdown sanitizado vía DOMPurify — la jerarquía visual del cuerpo viene del propio Markdown."
+    ],
+    "rules": [
+      { "name": "The One Voice Rule", "body": "El ámbar de marca (#f4a71c) es el único acento vivo del sitio público. Su rareza es el punto: en cualquier viewport, máximo una superficie compite por la atención del ojo.", "section": "colors" },
+      { "name": "The Dark-Only Rule", "body": "No existe modo claro. La marca no se adapta al sistema operativo; el visitante entra al taller.", "section": "colors" },
+      { "name": "The Drift Acknowledgement", "body": "css/blog.css define --accent / --text-primary / --text-muted que no existen en :root y caen siempre a fallbacks literales (#c89b3c, #fff, #c9c9c9). Resolución pendiente.", "section": "colors" },
+      { "name": "The Two-Face Rule", "body": "Montserrat y Poppins son las únicas dos voces del sitio. No se introduce serif editorial, monospace decorativo, ni sistema display alternativo.", "section": "typography" },
+      { "name": "The Flat-By-Default Rule", "body": "Las superficies son planas en reposo. La sombra aparece solo como respuesta al hover (y al foco del select del filtro).", "section": "elevation" }
+    ],
+    "dos": [
+      "Do mantener el blog dark-only. No añadir modo claro.",
+      "Do respetar prefers-reduced-motion para las partículas y los transform de hover.",
+      "Do sanitizar todo el Markdown con DOMPurify antes de insertarlo en el DOM.",
+      "Do usar aria-live solo en regiones que cambian con el usuario (errores, estado de carga), no en contenedores que reciben la lista completa.",
+      "Do escribir el texto de cara al usuario en español."
+    ],
+    "donts": [
+      "Don't introducir un segundo color de acento vivo. El ámbar de marca es único.",
+      "Don't añadir un eyebrow o kicker sobre los headings.",
+      "Don't usar texto con gradiente.",
+      "Don't apilar border + sombra sobre el mismo elemento en reposo.",
+      "Don't dejar el blog con sus variables --accent / --text-primary / --text-muted desconectadas de :root.",
+      "Don't publicar contenido del blog sin excerpt real ni cover propio.",
+      "Don't anidar elementos interactivos (anchor dentro de un article clickable)."
+    ]
+  }
+}

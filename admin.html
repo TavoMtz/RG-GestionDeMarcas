@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- METADATOS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Admin Blog | RG Gestión de Marcas</title>
+
+    <!-- STYLES -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/admin.css">
+    <!-- FUENTES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- LIBRERÍAS DEL BLOG (CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js" defer></script>
+
+    <!-- SCRIPTS compartidos -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js" defer></script>
+    <script src="./js/particles.js" defer></script>
+
+    <!-- Config + lógica -->
+    <script src="./js/blog-config.js" defer></script>
+    <script src="./js/admin.js" defer></script>
+
+    <!-- GENERAL -->
+    <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
+</head>
+
+<body>
+    <!-- PARTICLES -->
+    <div id="particles-js"></div>
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <nav class="nav">
+        <div class="containerLogo">
+            <a href="./index.html">
+                <img class="nav_logo containerLogo_img" src="./img/logoRG.png" alt="Logo RG Agencia de Marketing">
+            </a>
+        </div>
+        <button class="nav_buttonMenu" id="menuBtn">
+            <svg class="nav_buttonMenuSVG" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+
+        </button>
+        <div class="circular_reveal_menu" id="menuOverlay">
+            <ul class="menu_items">
+                <li><a href="./index.html">Inicio</a></li>
+                <li><a href="./nosotros.html">Sobre Nosotros</a></li>
+                <li><a href="./simulador-servicios.html">Simulador IA</a></li>
+                <li><a href="./contacto.html">Contacto</a></li>
+                <li><a href="./admin.html">Admin</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- VISTA: LOGIN -->
+        <section id="adminLogin" class="admin-login" hidden>
+            <h1>Acceso al Blog</h1>
+            <p class="admin-login__hint">Inicia sesión con tu cuenta de staff para gestionar los posts.</p>
+            <div id="adminLoginError" class="admin-login__error"></div>
+            <form id="loginForm">
+                <div class="admin-field">
+                    <label for="loginEmail">Correo electrónico</label>
+                    <input id="loginEmail" type="email" autocomplete="email" required>
+                </div>
+                <div class="admin-field">
+                    <label for="loginPassword">Contraseña</label>
+                    <div class="admin-password">
+                        <input id="loginPassword" type="password" autocomplete="current-password" required>
+                        <button id="togglePassword" type="button" class="admin-password__toggle"
+                            aria-label="Mostrar contraseña">
+                            <i class="fas fa-eye-slash"></i>
+                        </button>
+                    </div>
+                </div>
+                <button id="loginBtn" type="submit" class="admin-btn admin-btn--primary" style="width:100%">
+                    Entrar
+                </button>
+            </form>
+        </section>
+
+        <!-- VISTA: CAMBIO DE CONTRASEÑA (primer inicio) -->
+        <section id="adminPasswordChange" class="admin-login" hidden>
+            <h1>Cambia tu contraseña</h1>
+            <p class="admin-login__hint">
+                Por seguridad, debes crear una nueva contraseña antes de continuar.
+                Sesión iniciada como <strong id="passwordChangeEmail"></strong>.
+            </p>
+            <div id="passwordChangeError" class="admin-login__error"></div>
+            <form id="passwordChangeForm" autocomplete="off">
+                <div class="admin-field">
+                    <label for="newPassword">Nueva contraseña (mínimo 8 caracteres)</label>
+                    <input id="newPassword" type="password" autocomplete="new-password" minlength="8"
+                        required>
+                </div>
+                <div class="admin-field">
+                    <label for="confirmPassword">Confirma la nueva contraseña</label>
+                    <input id="confirmPassword" type="password" autocomplete="new-password" minlength="8"
+                        required>
+                </div>
+                <button id="passwordChangeBtn" type="submit" class="admin-btn admin-btn--primary"
+                    style="width:100%">
+                    Guardar y continuar
+                </button>
+                <button id="passwordChangeLogoutBtn" type="button" class="admin-btn admin-btn--ghost"
+                    style="width:100%; margin-top:0.6rem;">
+                    <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+                </button>
+            </form>
+        </section>
+
+        <!-- VISTA: APP -->
+        <section id="adminApp" class="admin-shell" hidden>
+            <header class="admin-header">
+                <h1>Administración del Blog</h1>
+                <div class="admin-header__user">
+                    <span id="adminUserEmail"></span>
+                    <button id="logoutBtn" class="admin-btn admin-btn--ghost">Salir</button>
+                </div>
+            </header>
+
+            <div id="adminNotice" class="admin-notice"></div>
+
+            <section class="admin-editor">
+                <div class="admin-editor__header">
+                    <h2 id="postEditorTitle">Nuevo post</h2>
+                    <button id="postNewBtn" class="admin-btn admin-btn--ghost">
+                        <i class="fas fa-plus"></i> Limpiar
+                    </button>
+                </div>
+
+                <form id="postForm">
+                    <div class="admin-field__row">
+                        <div class="admin-field">
+                            <label for="postTitle">Título *</label>
+                            <input id="postTitle" type="text" required maxlength="200">
+                        </div>
+                        <div class="admin-field">
+                            <label for="postSlug">Slug (URL)</label>
+                            <input id="postSlug" type="text" maxlength="200" placeholder="se-genera-automaticamente">
+                        </div>
+                    </div>
+
+                    <div class="admin-field">
+                        <label for="postExcerpt">Resumen</label>
+                        <input id="postExcerpt" type="text" maxlength="300"
+                            placeholder="Resumen corto que aparece en la tarjeta.">
+                    </div>
+
+                    <div class="admin-field">
+                        <label for="postContent">Contenido (Markdown) *</label>
+                        <textarea id="postContent" required placeholder="Escribe el contenido en Markdown…"></textarea>
+                    </div>
+
+                    <div class="admin-field__row">
+                        <div class="admin-field">
+                            <label for="postCoverFile">Imagen de portada (subir archivo)</label>
+                            <input id="postCoverFile" type="file" accept="image/*">
+                            <div id="postCoverPreview" class="admin-cover-preview"></div>
+                        </div>
+                        <div class="admin-field">
+                            <label for="postCoverUrl">…o URL de portada existente</label>
+                            <input id="postCoverUrl" type="url" placeholder="https://…">
+                        </div>
+                    </div>
+
+                    <div class="admin-field__row">
+                        <div class="admin-field">
+                            <label for="postStatus">Estado</label>
+                            <select id="postStatus">
+                                <option value="draft">Borrador</option>
+                                <option value="published">Publicado</option>
+                            </select>
+                        </div>
+                        <div class="admin-field">
+                            <label for="postTags">Tags (separados por coma)</label>
+                            <input id="postTags" type="text" placeholder="branding, marketing, diseño">
+                        </div>
+                    </div>
+
+                    <div class="admin-editor__actions">
+                        <button id="postSaveBtn" type="submit" class="admin-btn admin-btn--primary">
+                            <i class="fas fa-save"></i> Guardar
+                        </button>
+                        <button id="postCancelBtn" type="button" class="admin-btn admin-btn--ghost">
+                            Cancelar
+                        </button>
+                        <button id="postDeleteBtn" type="button" class="admin-btn admin-btn--danger" hidden>
+                            <i class="fas fa-trash"></i> Eliminar
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="admin-posts">
+                <h2>Todos los posts</h2>
+                <div id="adminPostsList" class="admin-posts__list"></div>
+            </section>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-col footer-brand">
+                <img src="./img/logoRG.png" alt="Logo RG" class="footer-brand-logo">
+                <p>Somos una agencia especializada en gestión de marcas. Transformamos negocios a través de estrategias
+                    de marketing integrales, diseño y comunicación efectiva.</p>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/RG.GestiondeMarcas" aria-label="Facebook" target="_blank"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/rg_gestionmarcas" aria-label="Instagram" target="_blank"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@rg_gestiondemarcas" aria-label="TikTok" target="_blank"><i
+                            class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Navegación</h3>
+                <ul>
+                    <li><a href="./index.html">Inicio</a></li>
+                    <li><a href="./nosotros.html">Sobre Nosotros</a></li>
+                    <li><a href="./simulador-servicios.html">Simulador IA</a></li>
+                    <li><a href="./blog.html">Blog</a></li>
+                    <li><a href="./contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Servicios</h3>
+                <ul>
+                    <li><a href="./index.html#sec-investigacion">Investigación de Mercados</a></li>
+                    <li><a href="./index.html#sec-branding">Naming, Diseño y Producción</a></li>
+                    <li><a href="./index.html#sec-web">Diseño Web</a></li>
+                    <li><a href="./index.html#sec-redes">Gestión de Redes Sociales</a></li>
+                    <li><a href="./index.html#sec-cursos">Cursos y Capacitación</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contacto</h3>
+                <div class="footer-contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>contacto@rg-gestiondemarcas.com</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>ventas@rg-gestiondemarcas.com</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+52 222 446 7947</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 RG Gestión de Marcas. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Script del menú -->
+    <script>
+        (function () {
+            const menuBtn = document.getElementById('menuBtn');
+            const menuOverlay = document.getElementById('menuOverlay');
+            menuBtn.addEventListener('click', () => {
+                menuOverlay.classList.toggle('active');
+                menuBtn.classList.toggle('is-active');
+            });
+        })();
+    </script>
+
+    <!-- FLOATING SOCIAL ICONS -->
+    <div class="floating-social" id="floatingSocial">
+        <a href="https://www.facebook.com/RG.GestiondeMarcas" aria-label="Facebook" class="floating-social__link"
+            target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/rg_gestionmarcas" aria-label="Instagram" class="floating-social__link"
+            target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@rg_gestiondemarcas" aria-label="TikTok" class="floating-social__link"
+            target="_blank"><i class="fab fa-tiktok"></i></a>
+        <button class="floating-social__toggle" aria-label="Ver redes sociales">
+            <i class="fas fa-share-alt floating-social__icon-open"></i>
+            <i class="fas fa-times floating-social__icon-close"></i>
+        </button>
+    </div>
+    <script>
+        (function () {
+            var social = document.getElementById('floatingSocial');
+            social.querySelector('.floating-social__toggle').addEventListener('click', function () {
+                social.classList.toggle('is-open');
+            });
+        })();
+    </script>
+
+</body>
+
+</html>

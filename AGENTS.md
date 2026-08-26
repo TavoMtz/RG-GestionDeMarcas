@@ -25,14 +25,24 @@ Desarrollo vanilla sin frameworks, sin bundlers, sin dependencias de Node en fro
 ├── nosotros.html               # Sobre Nosotros (filosofía, misión, visión, valores, propuesta)
 ├── simulador-servicios.html    # Simulador interactivo con IA (DeepSeek) y exportación a PDF/WhatsApp
 ├── contacto.html               # Formulario de contacto con envío vía Resend y datos de contacto
+├── blog.html                   # Blog público: lista de posts publicados + vista individual (Markdown + Supabase)
+├── admin.html                  # Panel de admin del blog (login + editor CRUD; requiere staff autenticado)
 ├── css/
 │   ├── index.css               # Estilos globales, variables CSS, nav, footer, transiciones zoom, hero
 │   ├── contacto.css            # Estilos específicos del formulario y vista de contacto
 │   ├── nosotros.css            # Estilos para secciones sobre nosotros y filosofía
-│   └── simulador.css           # Estilos del simulador, tarjetas de resultados y loader
+│   ├── simulador.css           # Estilos del simulador, tarjetas de resultados y loader
+│   ├── blog.css                # Estilos específicos del blog público (cards, post, filtros)
+│   └── admin.css               # Estilos del panel de admin (login, editor, listado)
 ├── js/
 │   ├── index.js                # Control del hero SVG, animaciones zoom entre pantallas, panel de redes
-│   └── particles.js            # Configuración de partículas interactivas de fondo
+│   ├── particles.js            # Configuración de partículas interactivas de fondo
+│   ├── blog-config.js          # Configuración pública de Supabase (URL + anon key) para el blog
+│   ├── blog.js                 # Lógica del blog público (listado + post individual)
+│   └── admin.js                # Lógica del admin (auth, CRUD de posts, tags, uploads)
+├── db/
+│   ├── blog_schema.sql         # Esquema Postgres + RLS + bucket Storage (idempotente, para Supabase)
+│   └── README.md               # Guía de despliegue del blog en Supabase
 ├── img/                        # Recursos gráficos, logotipos de clientes, capturas y favicon
 ├── source/                     # Recursos fuente adicionales (PDFs de portafolio)
 ├── netlify/
@@ -79,11 +89,29 @@ Desarrollo vanilla sin frameworks, sin bundlers, sin dependencias de Node en fro
 - Notificaciones de éxito/error en tiempo real en la UI.
 - Información de contacto directa (correo, WhatsApp, ubicación física en Puebla).
 
+### 5. `blog.html` (Blog público)
+- Lista de posts publicados (cards con portada, título, resumen, tags y fecha).
+- Vista individual: `blog.html?slug=<slug>` renderiza el Markdown del post (`marked`) y lo sanitiza con `DOMPurify` antes de insertarlo en el DOM.
+- Lectura vía cliente Supabase con `anon key`; la separación lectura/escritura se aplica en el servidor con **Row Level Security**.
+- Datos leídos: `posts`, `tags` con su tabla pivote `post_tags`.
+
+### 6. `admin.html` (Panel de administración del blog)
+- Login con email/contraseña mediante Supabase Auth (`signInWithPassword`). El registro público está deshabilitado; las cuentas de staff se crean manualmente desde el panel de Supabase.
+- **Cambio de contraseña obligatorio en el primer inicio**: el panel consulta `user_metadata.must_change_password`. Por defecto, todo usuario nuevo recibe `true` automáticamente gracias al trigger `force_password_change_default` definido en `db/blog_schema.sql`. Si el flag está activo, el panel muestra la vista `#adminPasswordChange` y bloquea el resto del admin hasta que el usuario establezca una nueva contraseña (mínimo 8 caracteres y confirmación obligatoria). Al guardar, se llama a `sb.auth.updateUser({ password, data: { must_change_password: false } })` y se muestra el panel. El flag persiste mientras esté en `true`, por lo que el cambio se vuelve a forzar si el usuario cierra el navegador sin completarlo.
+- Editor CRUD de posts:
+  - Título, slug (auto-generado desde el título, editable).
+  - Resumen, contenido en Markdown, estado (Borrador / Publicado).
+  - Subida de portada al bucket Storage `blog-covers` o URL manual.
+  - Tags (coma-separados, autos-creados).
+  - Eliminar post (cascade).
+- Listado de todos los posts con estado, slug, fecha de actualización, acceso a edición y vista previa pública.
+- Toda escritura pasa por RLS: sólo usuarios con rol `authenticated` pueden modificar las tablas del blog.
+
 ---
 
 ## 🔄 Componentes Compartidos (Mantener en Sincronía)
 
-Los siguientes bloques HTML/CSS/JS están replicados en las 4 páginas y **deben mantenerse idénticos** al realizar modificaciones:
+Los siguientes bloques HTML/CSS/JS están replicados en las 6 páginas (`index`, `nosotros`, `simulador-servicios`, `contacto`, `blog`, `admin`) y **deben mantenerse idénticos** al realizar modificaciones:
 
 1. **Barra de Navegación (`.nav`)**: Logo, botón hamburguesa (`#menuBtn`) y menú desplegable circular (`#menuOverlay`).
 2. **Pie de Página (`footer.footer`)**: Enlaces de navegación, lista de servicios, datos de contacto y copyright.
@@ -105,6 +133,13 @@ Los siguientes bloques HTML/CSS/JS están replicados en las 4 páginas y **deben
 - **Variables de Entorno** (configuradas en el panel del hosting, **nunca** commitear `.env`):
   - `RESEND_API_KEY`: Clave de API de Resend para envío de correos.
   - `DEEPSEEK_API_KEY`: Clave de API de DeepSeek para el simulador inteligente.
+
+### Base de datos del blog — Supabase
+- El blog usa **Supabase** como backend de datos. No requiere claves secretas en el frontend: la `anon key` es pública y se declara en `js/blog-config.js`.
+- Las operaciones de lectura/escritura y la autenticación del blog se hacen directamente desde el navegador con `@supabase/supabase-js` (cargado por CDN). **No** se exponen las claves `service_role` en el frontend.
+- La separación "todos leen, sólo autenticados escriben" se aplica con **Row Level Security (RLS)** definido en `db/blog_schema.sql`. Ver guía de despliegue en `db/README.md`.
+- Configuración local (no commitear):
+  - `SUPABASE_URL` y `SUPABASE_ANON_KEY` se copian desde *Supabase → Settings → API* al archivo `js/blog-config.js`.
 
 ---
 
@@ -130,4 +165,15 @@ Los siguientes bloques HTML/CSS/JS están replicados en las 4 páginas y **deben
    - Particles.js 2.0.0
    - jsPDF 2.5.1
    - `<lite-youtube>` para incrustación ligera y rápida de videos/Shorts de YouTube.
+   - `marked` — renderizado de Markdown en el blog público (`blog.html`).
+   - `DOMPurify` — sanitización obligatoria del HTML producido por `marked` antes de insertarlo en el DOM (cumple la regla anti-XSS del punto 1).
+   - `@supabase/supabase-js` — cliente del blog (lectura pública + auth/admin del panel).
+5. **Blog — Reglas adicionales**:
+   - Toda portada subida pasa al bucket `blog-covers`; la URL pública resultante se guarda en `posts.cover_image`.
+   - Los slugs se generan desde el título (slugify en `js/admin.js`) y deben ser únicos en `public.posts`.
+   - El slug define la URL pública del post: `blog.html?slug=<slug>`.
+6. **Admin — Cambio de contraseña obligatorio**:
+   - Por defecto, todo usuario nuevo fuerza el cambio de contraseña en su primer inicio. El script `db/blog_schema.sql` instala un trigger `BEFORE INSERT` sobre `auth.users` (`force_password_change_default`) que escribe `must_change_password = true` en `raw_user_meta_data` si no se especificó un valor explícito. **No hace falta configurar metadata al crear cuentas.**
+   - Excepciones: si al crear un usuario se define explícitamente `must_change_password: false` en la metadata, ese valor se respeta y el usuario NO será forzado a cambiar.
+   - Tras cambiar la contraseña, el flag se limpia desde el propio navegador (`sb.auth.updateUser` con `data`). Para volver a forzar el cambio a un usuario existente, usar *Edit user → User metadata* o el snippet SQL documentado en `db/blog_schema.sql` / `db/README.md`.
 
