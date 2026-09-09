@@ -326,6 +326,7 @@ function openRedesProject(projectKey) {
         img.src = src;
         img.alt = project.nombre;
         img.loading = 'lazy';
+        img.classList.add('zoom-on-hover');
         redesGallery.appendChild(img);
     });
 
@@ -377,4 +378,44 @@ redesFolders.forEach(folder => {
 
 if (redesCloseBtn) {
     redesCloseBtn.addEventListener('click', closeRedesProject);
+}
+
+/* ============================================================
+   LIGHTBOX FLOTANTE EN HOVER (solo escritorio)
+   Muestra la imagen casi a pantalla completa con un backdrop
+   semitransparente al pasar el mouse. Sin dependencias nuevas.
+   ============================================================ */
+if (window.matchMedia('(hover: hover)').matches) {
+    const lightbox = document.createElement('div');
+    lightbox.className = 'img-lightbox';
+    const lightboxImg = document.createElement('img');
+    lightboxImg.className = 'img-lightbox__img';
+    lightboxImg.alt = '';
+    lightbox.appendChild(lightboxImg);
+    document.body.appendChild(lightbox);
+
+    function abrirLightbox(img) {
+        if (!img) return;
+        lightboxImg.src = img.dataset.fullSrc || img.src;
+        lightboxImg.alt = img.alt || '';
+        lightbox.classList.add('active');
+    }
+
+    function cerrarLightbox() {
+        lightbox.classList.remove('active');
+    }
+
+    /* Opt-in explícito: solo las imágenes con clase zoom-on-hover */
+    document.querySelectorAll('img.zoom-on-hover').forEach(img => {
+        img.addEventListener('mouseenter', () => abrirLightbox(img));
+        img.addEventListener('mouseleave', cerrarLightbox);
+    });
+
+    /* Galería de proyectos de redes (imágenes dinámicas: delegación) */
+    if (typeof redesGallery !== 'undefined' && redesGallery) {
+        redesGallery.addEventListener('mouseover', (e) => {
+            if (e.target && e.target.tagName === 'IMG' && e.target.classList.contains('zoom-on-hover')) abrirLightbox(e.target);
+        });
+        redesGallery.addEventListener('mouseleave', cerrarLightbox);
+    }
 }

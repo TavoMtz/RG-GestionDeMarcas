@@ -981,6 +981,11 @@ h3 {
     filter: grayscale(0%) opacity(1);
 }
 
+/* Pausar la marquesina de clientes al pasar el mouse */
+.brand-carousel:hover .brand-track {
+    animation-play-state: paused;
+}
+
 /* Animación del carrusel */
 @keyframes scroll {
     0% {
@@ -2671,4 +2676,37 @@ h3 {
     .floating-social.is-open .floating-social__link:nth-child(1) {
         transition-delay: 0.21s;
     }
+}
+
+/* ===== LIGHTBOX FLOTANTE EN HOVER (solo escritorio) =====
+   El overlay usa pointer-events: none para no robar el hover
+   del elemento origen y evitar parpadeo al mostrarse. */
+.img-lightbox {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.75);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 10000;
+}
+
+.img-lightbox.active {
+    opacity: 1;
+}
+
+.img-lightbox__img {
+    max-width: 85vw;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 8px;
+    transform: scale(0.92);
+    transition: transform 0.3s ease;
+}
+
+.img-lightbox.active .img-lightbox__img {
+    transform: scale(1);
 }

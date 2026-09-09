@@ -22,6 +22,9 @@ export default async function handler(req, res) {
         });
 
         const data = await response.json();
+        /* LOG TEMPORAL de diagnóstico: respuesta cruda de DeepSeek (solo visible en logs del servidor) */
+        console.log('[analyze] DeepSeek status:', response.status);
+        console.log('[analyze] DeepSeek respuesta cruda:', JSON.stringify(data).slice(0, 2000));
         res.status(response.status).json(data);
     } catch (error) {
         res.status(500).json({ error: 'Error al conectar con la API de DeepSeek.' });

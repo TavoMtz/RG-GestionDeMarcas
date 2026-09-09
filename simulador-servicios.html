@@ -302,8 +302,8 @@
 
             const prompt = 'Eres consultor de marketing. Analiza este negocio: ' + descripcion +
                 '. Servicios disponibles: ' + listaServicios +
-                '. Proporciona: 1) Análisis breve del negocio 2) Top servicios prioritarios en orden de importancia 3) Explicación de 2-3 líneas por cada servicio de por qué es prioritario.' +
-                '\n\nIMPORTANTE: Responde ÚNICAMENTE con un JSON válido con esta estructura exacta, sin texto adicional antes o después:\n' +
+                '. Proporciona: 1) Análisis breve del negocio 2) ÚNICAMENTE los 2 servicios MÁS IMPORTANTES, en orden de relevancia, elegidos solo del catálogo disponible 3) Explicación de 2-3 líneas por cada servicio de por qué es prioritario. Elige estrictamente según las necesidades descritas; no asumas por defecto Diseño Web ni Gestión de Redes Sociales; evalúa los 5 servicios por igual.' +
+                '\n\nIMPORTANTE: Responde ÚNICAMENTE con un JSON válido con esta estructura exacta, con un máximo de 2 servicios, sin texto adicional antes o después:\n' +
                 '{"analisis": "texto del análisis del negocio", "servicios": [{"nombre": "Nombre del servicio", "explicacion": "Por qué es prioritario"}]}';
 
             const response = await fetch('/api/analyze', {
@@ -314,6 +314,7 @@
                 body: JSON.stringify({
                     model: 'deepseek-v4-flash',
                     max_tokens: 1500,
+                    temperature: 0.8,
                     thinking: { type: 'disabled' },
                     response_format: { type: 'json_object' },
                     messages: [
@@ -366,7 +367,7 @@
             /* Servicios priorizados */
             serviciosGrid.innerHTML = '';
 
-            var servicios = data.servicios || [];
+            var servicios = (data.servicios || []).slice(0, 2);
             servicios.forEach(function (servicio, index) {
                 var card = document.createElement('div');
                 card.className = 'servicio-card';
