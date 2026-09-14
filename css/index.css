@@ -673,6 +673,18 @@ h3 {
     filter: grayscale(100%);
 }
 
+.quoteBreak_logo--enprotech {
+    width: min(300px, 80vw);
+    max-width: none;
+    transition: transform 0.3s ease, opacity 0.3s ease, filter 0.35s ease;
+}
+
+.quoteBreak_logo--enprotech:hover {
+    opacity: 1;
+    transform: translateY(-2px) scale(1.04);
+    filter: grayscale(0%) drop-shadow(0 6px 16px rgba(72, 170, 191, 0.55)) drop-shadow(0 10px 30px rgba(0, 83, 132, 0.35));
+}
+
 /* Decoración de fondo para las frases */
 .quote-break::after {
     content: '"';
