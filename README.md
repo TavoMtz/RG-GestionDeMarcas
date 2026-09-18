@@ -10,24 +10,6 @@ Sitio web corporativo de **RG Gestión de Marcas**, agencia de marketing digital
 - **Supabase** (Postgres + Auth + Storage) como base de datos del blog
 - Librerías vía CDN: `marked` (Markdown), `DOMPurify` (anti-XSS), `@supabase/supabase-js`
 
-## Estructura
-
-```
-├── index.html                  # Página principal
-├── nosotros.html               # Sobre Nosotros
-├── simulador-servicios.html    # Simulador IA
-├── contacto.html               # Formulario de contacto
-├── blog.html                   # Blog público (lista + posts)
-├── admin.html                  # Panel de administración del blog (login + editor)
-├── css/                        # Estilos por página
-├── js/                         # Lógica del frontend (index.js, particles.js, blog.js, admin.js, blog-config.js)
-├── img/                        # Imágenes y portafolio por servicio
-├── db/                         # Esquema SQL del blog (Supabase) + README
-├── netlify/functions/          # Funciones serverless activas (CommonJS)
-├── api/                        # Duplicados Vercel (ESM)
-└── netlify.toml                # Configuración de Netlify
-```
-
 ## Blog
 
 El blog es público para lectura y de CRUD restringido al equipo de staff.
