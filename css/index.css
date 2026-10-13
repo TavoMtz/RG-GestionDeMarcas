@@ -2711,8 +2711,8 @@ h3 {
 }
 
 .img-lightbox__img {
-    max-width: 85vw;
-    max-height: 85vh;
+    width: min(85vw, 85vh, 900px);
+    height: min(85vw, 85vh, 900px);
     object-fit: contain;
     border-radius: 8px;
     transform: scale(0.92);
